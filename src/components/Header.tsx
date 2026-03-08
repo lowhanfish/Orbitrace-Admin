@@ -37,18 +37,18 @@ const Header = () => {
                     <div className='flex cursor-pointer justify-center items-center h-8 w-8 bg-b-gray-2/90 hover:bg-b-gray-3/70 rounded-[50%]'>
                         <FaList className='text-b-gray-6' />
                     </div>
-                    <Image className='object-fill' src="/images/logo.png" alt='' width={150} height={100} />
+                    <Image className='object-fill' src={theme == 'dark' ? '/images/icon_light.png' : '/images/icon_dark.png'} alt='' width={150} height={100} />
                 </div>
-                <div className='flex-1 flex justify-end px-5 gap-2'>
-                    <div onClick={() => changeTheme()} className='flex cursor-pointer justify-center items-center h-8 w-8 bg-b-gray-3/90 hover:bg-b-gray-3/70 rounded-[50%]'>
+                <div className='md:flex-1 flex justify-end px-5 gap-2'>
+                    <div onClick={() => changeTheme()} className='md:flex hidden cursor-pointer justify-center items-center h-8 w-8 bg-b-gray-3/90 hover:bg-b-gray-3/70 rounded-[50%]'>
                         {
                             statusx ? <span className='text-b-gray-6'>☀️</span> : <span className='text-b-gray-6'>🌙</span>
                         }
                     </div>
-                    <div className='flex cursor-pointer justify-center items-center h-8 w-8 bg-b-gray-2/90 hover:bg-b-gray-3/70 rounded-[50%]'>
+                    <div className='md:flex hidden cursor-pointer justify-center items-center h-8 w-8 bg-b-gray-2/90 hover:bg-b-gray-3/70 rounded-[50%]'>
                         <span className='text-b-gray-6'>🛎️</span>
                     </div>
-                    <div className='flex gap-2 cursor-pointer justify-center items-center bg-b-gray-1/90 hover:bg-b-gray-3/70 rounded-md px-3'>
+                    <div className='md:flex hidden gap-2 cursor-pointer justify-center items-center bg-b-gray-1/90 hover:bg-b-gray-3/70 rounded-md px-3'>
                         <div>
                             <img className='rounded-[50%] border-2 border-b-gray-2 w-6 h-6' src="https://avatars.githubusercontent.com/u/105328583?v=4" alt="" />
                         </div>

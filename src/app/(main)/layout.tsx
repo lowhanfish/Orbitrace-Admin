@@ -10,7 +10,7 @@ const layout = ({ children }: { children: ReactNode }) => {
             <Header />
             <div className='flex gap-2 flex-1 mt-2' >
                 <SideBar />
-                <div className='w-full h-full'>
+                <div className='md:w-full h-full'>
                     {children}
                 </div>
             </div>
