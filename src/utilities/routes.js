@@ -11,7 +11,90 @@ const routex = [
         title : "Core",
         path:"/",
         icon : <BsGrid />,
-        children : []
+        children : [
+            {
+                title : "Asset Management",
+                path:"/",
+                children : []
+            },
+            {
+                title : "Customer Management",
+                path:"/",
+                children : [
+                    {
+                        title : "AI-Lead SCorring",
+                        path:"/",
+                        children : []
+                    },
+                    {
+                        title : "Customer Database",
+                        path:"/",
+                        children : []
+                    },
+                    {
+                        title : "Follow-Up Management",
+                        path:"/",
+                        children : []
+                    },
+                    {
+                        title : "Interaction History",
+                        path:"/",
+                        children : []
+                    },
+                    {
+                        title : "Lead Pipeline",
+                        path:"/",
+                        children : []
+                    },
+                ]
+            },
+            {
+                title : "Employee Management",
+                path:"/",
+                children : []
+            },
+            {
+                title : "Financial Management",
+                path:"/",
+                children : [
+                    {
+                        title : "AI-Anomaly Detection",
+                        path:"/",
+                        children : []
+                    },
+                    {
+                        title : "Budget Planning",
+                        path:"/",
+                        children : []
+                    },
+                    {
+                        title : "Cashflow Tracking",
+                        path:"/",
+                        children : []
+                    },
+                    {
+                        title : "Expense Management",
+                        path:"/",
+                        children : []
+                    },
+                    {
+                        title : "Financial Reporting",
+                        path:"/",
+                        children : []
+                    },
+                    {
+                        title : "Invoice",
+                        path:"/",
+                        children : []
+                    },
+                ]
+            },
+            {
+                title : "Sales Management",
+                path:"/",
+                children : []
+            },
+        ]
     },
     {
         title : "Property",
