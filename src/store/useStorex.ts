@@ -6,7 +6,7 @@ interface StoreState {
     setIsSideBarOpen : () => void,
 }
 
-export const useStore = create<StoreState>((set)=>({
+export const useStorex = create<StoreState>((set)=>({
     isSideBarOpen: false,
     setIsSideBarOpen : () => set((state)=>({isSideBarOpen : !state.isSideBarOpen}))
 }))
