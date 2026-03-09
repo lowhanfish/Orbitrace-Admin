@@ -11,7 +11,13 @@ const SideBar = () => {
     const isSideBarOpen = useStorex(state => state.isSideBarOpen)
 
     return (
-        <aside className={`${isSideBarOpen ? 'hidden' : 'block'} bg-linear-to-b from-b-gray-1 from-5% to-b-gray-1/20 shadow-md fixed h-full w-60 rounded-[10] px-2 py-5 overflow-y-scroll`}>
+        <aside className={
+            `
+            transition-all duration-300 ease-in-out
+            ${isSideBarOpen ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}
+            bg-linear-to-b from-b-gray-1 from-5% to-b-gray-1/20 shadow-md 
+            fixed h-full w-60 rounded-[10] px-2 py-5 overflow-y-scroll`
+        }>
             {
                 routes.map((data, index) => (
                     <div key={data.title} className=''>

@@ -42,14 +42,18 @@ const Header = () => {
                     </button>
 
                     {/* Render Image berdasarkan tema secara dinamis */}
-                    <Image
-                        priority
-                        className='object-contain'
-                        src={isDark ? "/images/icon_light.png" : "/images/icon_dark.png"}
-                        alt='Logo'
-                        width={150}
-                        height={100}
-                    />
+                    <div className='w-30'>
+                        <Image
+                            priority
+                            src={isDark ? "/images/icon_light.png" : "/images/icon_dark.png"}
+                            alt='Logo'
+                            width={500} // Beri angka besar sebagai resolusi maksimal
+                            height={200}
+                            style={{ width: '100%', height: 'auto' }} // Pakai 100% agar mengikuti ukuran div pembungkusnya
+                            className='object-contain'
+                        />
+
+                    </div>
                 </div>
 
                 <div className='md:flex-1 flex justify-end px-5 gap-2'>

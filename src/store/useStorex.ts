@@ -7,6 +7,6 @@ interface StoreState {
 }
 
 export const useStorex = create<StoreState>((set)=>({
-    isSideBarOpen: false,
+    isSideBarOpen: true,
     setIsSideBarOpen : () => set((state)=>({isSideBarOpen : !state.isSideBarOpen}))
 }))
