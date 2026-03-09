@@ -3,7 +3,7 @@ import React from 'react'
 const page = () => {
     return (
         <div>
-            <h1>Aset</h1>
+            <h1>Maintenance Scheduling</h1>
         </div>
     )
 }
