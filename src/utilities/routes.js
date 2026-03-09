@@ -18,17 +18,17 @@ const routex = [
                 children : [
                     {
                         title : "Asset Depreciation",
-                        path:"/core/asset_deprication",
+                        path:"/core/asset_management/asset_depreciation",
                         children : []
                     },
                     {
                         title : "Company Asset Tracking",
-                        path:"/core/company_asset_tracking",
+                        path:"/core/asset_management/company_asset_tracking",
                         children : []
                     },
                     {
                         title : "Maintenance Scheduling",
-                        path:"/core/maintenance_scheduling",
+                        path:"/core/asset_management/maintenance_scheduling",
                         children : []
                     },
                 ]
