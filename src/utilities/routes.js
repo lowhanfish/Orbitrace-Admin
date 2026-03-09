@@ -1,4 +1,4 @@
-import { BsFillHouseFill, BsPlayFill, BsGrid, BsBuildings, BsRobot } from "react-icons/bs";
+import { BsFillHouseFill, BsPlayFill, BsGrid, BsBuildings, BsRobot, BsGear } from "react-icons/bs";
 
 const routex = [
     {
@@ -107,6 +107,28 @@ const routex = [
         path:"/",
         icon : <BsRobot />,
         children : []
+    },
+    {
+        title : "Data Mastering",
+        path:"/",
+        icon : <BsGear />,
+        children : [
+            {
+                title : "User Management",
+                path:"/",
+                children : []
+            },
+            {
+                title : "Template Management",
+                path:"/",
+                children : []
+            },
+            {
+                title : "Data Source",
+                path:"/",
+                children : []
+            },
+        ]
     },
 
 

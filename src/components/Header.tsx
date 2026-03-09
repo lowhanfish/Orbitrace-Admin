@@ -8,36 +8,43 @@ import Image from 'next/image';
 const Header = () => {
 
     const { theme, setTheme } = useTheme()
+    const [mounted, setMounted] = useState(false)
     const [statusx, setStatusx] = useState(false)
 
+
+
     const changeTheme = () => {
-        if (theme === "light") {
-            // setStatusx(true)
-            setTheme("dark")
-        } else {
-            // setStatusx(false)
-            setTheme("light")
-        }
+        setTheme(theme === "light" ? "dark" : "light")
     }
 
+
+
     useEffect(() => {
+        setMounted(true)
         if (theme === "light") {
             setStatusx(false)
         } else {
             setStatusx(true)
         }
-    }, [theme])
+    }, [])
+
+
 
     return (
         <div className='w-full'>
-            <div className='flex items-center w-full rounded-md h-15 bg-linear-to-r from-b-gray-1 from-5% to-b-gray-1/20 shadow-md'>
+            <div className='flex items-center w-full rounded-[10] h-15 bg-linear-to-r from-b-gray-1 from-5% to-b-gray-1/20 shadow-md'>
 
 
                 <div className='flex gap-3 flex-1 px-5'>
                     <div className='flex cursor-pointer justify-center items-center h-8 w-8 bg-b-gray-2/90 hover:bg-b-gray-3/70 rounded-[50%]'>
                         <FaList className='text-b-gray-6' />
                     </div>
-                    <Image className='object-fill' src={theme == 'dark' ? '/images/icon_light.png' : '/images/icon_dark.png'} alt='' width={150} height={100} />
+                    <div className='hidden dark:block'>
+                        <Image className='object-fill' src="/images/icon_light.png" alt='' width={150} height={100} />
+                    </div>
+                    <div className='block dark:hidden'>
+                        <Image className='object-fill' src="/images/icon_dark.png" alt='' width={150} height={100} />
+                    </div>
                 </div>
                 <div className='md:flex-1 flex justify-end px-5 gap-2'>
                     <div onClick={() => changeTheme()} className='md:flex hidden cursor-pointer justify-center items-center h-8 w-8 bg-b-gray-3/90 hover:bg-b-gray-3/70 rounded-[50%]'>

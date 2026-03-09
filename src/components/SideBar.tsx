@@ -4,10 +4,16 @@ import { ReactNode, useState } from 'react'
 import { BsFillHouseFill, BsPlayFill, BsDot } from "react-icons/bs";
 import routes from '@/utilities/routes';
 
-const SideBar = () => {
+const SideBar = ({ isOpen }: { isOpen: boolean }) => {
     return (
-        <aside className='w-64 bg-b-gray-1 rounded-[5] px-2 py-5'>
+        <aside className='bg-linear-to-b from-b-gray-1 from-5% to-b-gray-1/20 shadow-md fixed h-full w-60 rounded-[10] px-2 py-5 overflow-y-scroll'>
 
+            {/* <aside className={`
+    fixed top-0 left-0 h-full w-64 bg-b-gray-1 overflow-y-scroll
+    transition-transform duration-300 ease-in-out
+    ${isOpen ? "translate-x-0" : "-translate-x-full"}
+`}> */}
+            {/* <h1>nilai : {isOpen.toString()}</h1> */}
             {
                 routes.map((data, index) => (
                     <div key={data.title} className=''>
