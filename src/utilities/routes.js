@@ -130,19 +130,57 @@ const routex = [
         icon : <BsGear />,
         children : [
             {
-                title : "User Management",
+                title : "Access Management",
                 path:"/",
-                children : []
+                children : [
+                    {
+                        title : "Group Role Management",
+                        path:"/master/access_management/group_role_management",
+                        children : []
+                    },
+                    {
+                        title : "User Authorization",
+                        path:"/master/access_management/user_authorization",
+                        children : []
+                    },
+                    {
+                        title : "User Register",
+                        path:"/master/access_management/user_register",
+                        children : []
+                    },
+                ]
             },
             {
                 title : "Template Management",
                 path:"/",
-                children : []
+                children : [
+                    {
+                        title : "Component Template",
+                        path:"/master/template_management/component_template",
+                        children : []
+                    },
+                    {
+                        title : "Example Template",
+                        path:"/master/template_management/example_template",
+                        children : []
+                    },
+                ]
             },
             {
                 title : "Data Source",
                 path:"/",
-                children : []
+                children : [
+                    {
+                        title : "Master Cluster Age",
+                        path:"/master/data_source/master_cluster_age",
+                        children : []
+                    },
+                    {
+                        title : "Master Gender",
+                        path:"/master/data_source/master_gender",
+                        children : []
+                    },
+                ]
             },
         ]
     },
