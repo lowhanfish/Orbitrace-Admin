@@ -1,31 +1,50 @@
 "use client"
 
-import { ReactNode, useState } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import { BsFillHouseFill, BsPlayFill, BsDot } from "react-icons/bs";
 import routes from '@/utilities/routes';
 import { useStorex } from '@/store/useStorex';
 import Link from 'next/link';
+import useCheckScreen from '@/hooks/useCheckScreen';
+
 
 
 
 const SideBar = () => {
 
+    const screenx = useCheckScreen()
     const isSideBarOpen = useStorex(state => state.isSideBarOpen)
+    const setIsSideBarStat = useStorex((state) => state.setIsSideBarStat)
+
+
+    useEffect(() => {
+        if (screenx.screen === "Tablet" || screenx.screen === "Mobile") {
+            setIsSideBarStat(false)
+        } else {
+            setIsSideBarStat(true)
+
+        }
+
+    }, [screenx])
 
     return (
 
         <div className={`
             transition-all duration-300 ease-in-out
-            ${isSideBarOpen ? 'translate-x-0 opacity-100 w-65' : '-translate-x-full opacity-0 w-0'}
+            ${(screenx.screen === "Mobile" || screenx.screen === "Tablet") && "fixed h-full"}
+            ${isSideBarOpen ? 'translate-x-0 opacity-100 w-70 md:w-65' : '-translate-x-full opacity-0 w-0'}
         
         `}>
+            {/* <p>{screenx.screen}</p> */}
+
             <aside className={
                 `
+                left-0 z-10
                 transition-all duration-300 ease-in-out
                 ${isSideBarOpen ? 'translate-x-0 ' : '-translate-x-full'}
             
                 bg-linear-to-b from-b-gray-1 from-5% to-b-gray-1/20 shadow-md 
-                fixed h-full rounded-[10] px-2 py-5 overflow-y-scroll`
+                w-full h-full rounded-[10] px-2 py-5 overflow-y-scroll`
             }>
                 {
                     routes.map((data, index) => (
@@ -68,6 +87,7 @@ const Submenu = ({ data, level }: { data: dataProps, level: number }) => {
     return (
         <div className="w-full">
             {/* Wrapper utama item menu */}
+
 
             {
                 data.children && data.children.length > 0 ?
