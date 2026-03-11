@@ -77,10 +77,10 @@ const Submenu = ({ data, level }: { data: dataProps, level: number }) => {
             return "flex pl-2 pr-1 items-center py-3 hover:bg-b-gray-2 rounded-[5px] cursor-pointer mb-1";
         }
         if (level === 2) {
-            return "py-2 pl-8 pr-1 font-bold hover:bg-b-gray-2 rounded-[5px] cursor-pointer";
+            return "py-2 font-roboto pl-8 pr-1 font-bold hover:bg-b-gray-2 rounded-[5px] cursor-pointer";
         }
         // Level 3 dst
-        return "py-2 pl-8 pr-1 font-normal hover:bg-b-gray-2 rounded-[5px] cursor-pointer";
+        return "py-2 font-roboto pl-8 pr-1 font-normal hover:bg-b-gray-2 rounded-[5px] cursor-pointer";
     }
 
 
