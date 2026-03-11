@@ -14,8 +14,10 @@ const layout = ({ children }: { children: ReactNode }) => {
             <Header />
             <div className='flex gap-2 flex-1 mt-2' >
                 <SideBar />
-                <div className='w-full h-full'>
-                    {children}
+                <div className='w-full h-full relative'>
+                    <div className='absolute overflow-y-scroll w-full h-full'>
+                        {children}
+                    </div>
                 </div>
             </div>
         </div>

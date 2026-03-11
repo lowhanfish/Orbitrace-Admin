@@ -39,6 +39,7 @@ const SideBar = () => {
 
             <aside className={
                 `
+                fixed
                 left-0 z-10
                 transition-all duration-300 ease-in-out
                 ${isSideBarOpen ? 'translate-x-0 ' : '-translate-x-full'}
