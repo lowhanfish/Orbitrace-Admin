@@ -3,6 +3,8 @@ import TextSeparate from '@/components/items/TextSeparate';
 import ListUser from './components/ListUser';
 import ListDocuments from './components/ListDocuments';
 import InputData from './components/InputData';
+import BTable from './components/BTable';
+
 
 
 const page = () => {
@@ -16,6 +18,9 @@ const page = () => {
 
             <TextSeparate title='List User' />
             <ListUser />
+
+            <TextSeparate title='Table List' />
+            <BTable />
 
 
 

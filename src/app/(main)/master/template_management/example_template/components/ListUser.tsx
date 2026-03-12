@@ -26,12 +26,8 @@ const ListUser = () => {
         </div>
     )
 }
-
-export default ListUser
-   
-    
+export default ListUser    
     `
-
 
     return (
         <div className='flex flex-col bg-linear-to-r from-b-gray-1 to-50% to-b-gray-1/40 shadow-sm rounded-[5] px-3 py-3 mt-2'>
