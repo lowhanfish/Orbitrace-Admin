@@ -3,8 +3,7 @@
 import { useState, useEffect } from 'react'
 import { BsGear } from "react-icons/bs";
 import CodeWrapper from './CodeWrapper'
-import BModal from './BModal';
-
+import BModal from '@/components/items/BModal';
 
 const Data = [
     {
@@ -114,7 +113,7 @@ const codeString = `
 
 import { useState } from 'react'
 import { BsGear } from "react-icons/bs";
-import BModal from './BModal';
+import BModal from '@/components/items/BModal';
 
 const Data = [
     {
