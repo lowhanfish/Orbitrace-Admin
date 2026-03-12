@@ -19,14 +19,13 @@ const BInputFile = ({ accept, title, placeholder, onFileSelect, multiple = false
         const files = e.target.files;
 
         if (files && files.length > 0) {
-            setNumFile(files.length);
+            const count = files.length;
+            setNumFile(count);
 
             if (multiple) {
-                // Mode Multiple: Kirim seluruh FileList, tampilkan jumlah
-                setDisplayText(`${files.length} file terpilih`);
+                setDisplayText(`${count} file terpilih`);
                 onFileSelect(files);
             } else {
-                // Mode Single: Kirim file pertama saja, tampilkan namanya
                 setDisplayText(files[0].name);
                 onFileSelect(files[0]);
             }
@@ -35,6 +34,9 @@ const BInputFile = ({ accept, title, placeholder, onFileSelect, multiple = false
             setDisplayText("");
             onFileSelect(null);
         }
+
+        // Trik agar bisa pilih file yang sama setelah dihapus
+        e.target.value = "";
     }
 
     return (
