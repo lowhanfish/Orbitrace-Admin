@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { BsGear } from "react-icons/bs";
+import CodeWrapper from './CodeWrapper'
 import BModal from './BModal';
 
 
@@ -83,30 +84,119 @@ const BTable = () => {
                 </tbody>
             </table>
 
-
-
-
-
             <BModal title='Configuration' openModal={open} setOpenModal={setOpen} size='xs'>
                 <div className='flex flex-col gap-2 p-4'>
-                    <button className='bg-b-blue-5 hover:bg-b-blue-5/70 cursor-pointer flex gap-2 justify-center items-center text-[12px] p-1.5 rounded-[5] shadow-md'>
+                    <button className='bg-b-blue-4 hover:bg-b-blue-5/70 cursor-pointer flex gap-2 justify-center items-center text-[12px] p-1.5 rounded-[5] shadow-md'>
                         Detail
                     </button>
-                    <button className='bg-b-yellow-5 hover:bg-b-yellow-5/70 cursor-pointer flex gap-2 justify-center items-center text-[12px] p-1.5 rounded-[5] shadow-md'>
+                    <button className='bg-b-yellow-4 hover:bg-b-yellow-5/70 cursor-pointer flex gap-2 justify-center items-center text-[12px] p-1.5 rounded-[5] shadow-md'>
                         Edit
                     </button>
-                    <button className='bg-b-red-5 hover:bg-b-red-5/70 cursor-pointer flex gap-2 justify-center items-center text-[12px] p-1.5 rounded-[5] shadow-md'>
+                    <button className='bg-b-red-4 hover:bg-b-red-5/70 cursor-pointer flex gap-2 justify-center items-center text-[12px] p-1.5 rounded-[5] shadow-md'>
                         Delete
                     </button>
                 </div>
             </BModal>
 
-
-
-
-
+            <div className='mt-5'>
+                <CodeWrapper codeString={codeString} />
+            </div>
         </div>
     )
 }
 
 export default BTable
+
+
+
+const codeString = `
+"use client"
+
+import { useState } from 'react'
+import { BsGear } from "react-icons/bs";
+import BModal from './BModal';
+
+const Data = [
+    {
+        name: "Kiken S batara, S.Si.,MT", 
+        role: "Fullstack AI Engineer", 
+        address: "Jl. Beringin No. 31", 
+        status: "reject" 
+    },
+    {
+        name: "Riswan M Rizal. ST", 
+        role: "Fullstack AI Engineer", 
+        address: "Jl. Beringin No. 31", 
+        status: "pending" 
+    },
+    {
+        name: "Muh. Hidayat Dermawan. ST", 
+        role: "Fullstack AI Engineer", 
+        address: "Jl. Beringin No. 31", 
+        status: "approve" 
+    },
+    {
+        name: "Asrif Fajar Hidayat", 
+        role: "Fullstack AI Engineer", 
+        address: "Jl. Beringin No. 31", 
+        status: "pending" 
+    },
+]
+
+const BTable = () => {
+    const [open, setOpen] = useState(false);
+    return (
+        <div className='flex flex-col bg-linear-to-r from-b-gray-1 to-50% to-b-gray-1/40 shadow-sm rounded-lg px-3 py-3 mt-2'>
+            <table className='Btable w-full'>
+                <thead>
+                    <tr className="text-left">
+                        <th className='w-[5%] text-center'>No</th>
+                        <th className='w-[5%] text-center'>Act</th>
+                        <th className='w-[30%]'>Name</th>
+                        <th className='w-[50%]'>Address</th>
+                        <th className='w-[10%] text-center'>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {Data.map((item, index) => (
+                        <tr key={index}>
+                            <td className='text-center'>{index + 1}</td>
+                            <td className='flex justify-center py-2'>
+                                <button onClick={() => setOpen(!open)} className='bg-b-gray-2/80 hover:bg-b-gray-2/50 flex justify-center items-center rounded-full w-6 h-6 cursor-pointer'>
+                                    <BsGear className='text-b-gray-6' />
+                                </button>
+                            </td>
+                            <td>{item.name}</td>
+                            <td>{item.address}</td>
+                            <td>
+                                <p className={\`w-full py-1 flex items-center justify-center rounded-2xl text-[12px] text-b-gray-6 \${
+                                    item.status === "pending" ? "bg-b-yellow-5" : item.status === "approve" ? "bg-b-green-5" : "bg-b-red-5"
+                                }\`}>
+                                    {item.status}
+                                </p>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+
+            <BModal title='Configuration' openModal={open} setOpenModal={setOpen} size='xs'>
+                <div className='flex flex-col gap-2 p-4'>
+                    <button className='bg-b-blue-4 hover:bg-b-blue-5/70 cursor-pointer flex gap-2 justify-center items-center text-[12px] p-1.5 rounded-md shadow-md'>
+                        Detail
+                    </button>
+                    <button className='bg-b-yellow-4 hover:bg-b-yellow-5/70 cursor-pointer flex gap-2 justify-center items-center text-[12px] p-1.5 rounded-md shadow-md'>
+                        Edit
+                    </button>
+                    <button className='bg-b-red-4 hover:bg-b-red-5/70 cursor-pointer flex gap-2 justify-center items-center text-[12px] p-1.5 rounded-md shadow-md'>
+                        Delete
+                    </button>
+                </div>
+            </BModal>
+        </div>
+    )
+}
+
+export default BTable
+`;
