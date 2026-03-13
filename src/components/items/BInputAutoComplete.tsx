@@ -7,68 +7,131 @@ interface BInputAutocompleteProps {
     suggestions: string[]; // Daftar pilihan (misal: nama kota atau kategori)
     value: string;
     setValue: (val: string) => void;
+
 }
 
-const BInputAutocomplete = ({ title, placeholder, suggestions, value, setValue }: BInputAutocompleteProps) => {
-    const [filtered, setFiltered] = useState<string[]>([]);
-    const [show, setShow] = useState(false);
-    const wrapperRef = useRef<HTMLDivElement>(null);
+const DataObj = [
+    {
+        name: "Kiken S batara, S.Si.,MT",
+        role: "Fullstack AI Engineer",
+        address: "Jl. Beringin No. 31",
+        status: "reject"
+    },
+    {
+        name: "Riswan M Rizal. ST",
+        role: "Fullstack AI Engineer",
+        address: "Jl. Beringin No. 31",
+        status: "pending"
+    },
+    {
+        name: "Muh. Hidayat Dermawan. ST",
+        role: "Fullstack AI Engineer",
+        address: "Jl. Beringin No. 31",
+        status: "approve"
+    },
+    {
+        name: "Asrif Fajar Hidayat",
+        role: "Fullstack AI Engineer",
+        address: "Jl. Beringin No. 31",
+        status: "pending"
+    },
+    {
+        name: "Fajar Syahputra, ST",
+        role: "Fullstack AI Engineer",
+        address: "Jl. Beringin No. 31",
+        status: "pending"
+    },
+]
 
-    // Filter data berdasarkan ketikan user
-    useEffect(() => {
-        if (value) {
-            const match = suggestions.filter(item =>
-                item.toLowerCase().includes(value.toLowerCase())
-            );
-            setFiltered(match);
+const BInputAutocomplete = ({ title, placeholder }: BInputAutocompleteProps) => {
+
+    const boxRef = useRef<HTMLDivElement>(null)
+    const [value, setValue] = useState<string>("")
+    const [option, setOption] = useState<any>([])
+    const [showData, setShowData] = useState<boolean>(false)
+
+    const getValue = (e: any) => {
+        setValue(e)
+        console.log(e.toLowerCase)
+        if (e.trim() !== "") {
+            const search = DataObj.filter((item) => {
+                return item.name.toLowerCase().includes(e.toLowerCase())
+            })
+                .map((item) => ({
+                    name: item.name,
+                    role: item.role,
+                    address: item.address,
+                    status: item.status,
+                }))
+
+
+            setOption(search)
         } else {
-            setFiltered([]);
+            setOption(DataObj)
         }
-    }, [value, suggestions]);
+    }
 
-    // Menutup dropdown jika user klik di luar komponen
+    const handleClickACT = () => {
+        console.log("wah div di click")
+        setShowData(true)
+    }
+
     useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
-                setShow(false);
+        const handleClickOutACT = (e: MouseEvent) => {
+            if (boxRef.current && !boxRef.current.contains(e.target as Node)) {
+                console.log("Wak diluar div ni")
+                setShowData(false)
             }
-        };
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => document.removeEventListener("mousedown", handleClickOutside);
-    }, []);
+        }
+        window.addEventListener("mousedown", handleClickOutACT)
+        return () => {
+            window.removeEventListener("mousedown", handleClickOutACT)
+        }
+
+    }, [])
+
+
+    useEffect(() => {
+        setOption(DataObj)
+    }, [])
+
+
 
     return (
-        <div className='w-full relative' ref={wrapperRef}>
-            <span className='text-[12px] text-b-gray-3 font-roboto'>{title}</span>
-            <input
-                type="text"
-                value={value}
-                onFocus={() => setShow(true)}
-                onChange={(e) => {
-                    setValue(e.target.value);
-                    setShow(true);
-                }}
-                placeholder={placeholder}
-                className='w-full border bg-b-gray-2/35 border-b-gray-3/40 px-2 py-1.5 text-[14px] rounded-[5px] outline-none focus:border-b-blue-4 transition-all'
-            />
+        <div
+            ref={boxRef}
+            onClick={handleClickACT}
+        >
+            <div className='w-full relative'>
+                <span className='text-[12px] text-b-gray-3 font-roboto'>{title}</span>
+                <input
+                    placeholder={placeholder}
+                    value={value}
+                    className='w-full border bg-b-gray-2/35 border-b-gray-3/40 px-2 py-1.5 text-[14px] rounded-[5]'
+                    onChange={(e) => getValue(e.target?.value)}
 
-            {/* Dropdown Suggestions */}
-            {show && filtered.length > 0 && (
-                <ul className='absolute z-50 w-full mt-1 bg-b-gray-5 border border-b-gray-3/20 shadow-lg max-h-40 overflow-y-auto rounded-[5px] py-1'>
-                    {filtered.map((item, index) => (
-                        <li
-                            key={index}
-                            onClick={() => {
-                                setValue(item);
-                                setShow(false);
-                            }}
-                            className='px-3 py-2 text-[14px] hover:bg-b-gray-4 text-b-gray-2 hover:text-white cursor-pointer transition-colors'
-                        >
-                            {item}
-                        </li>
-                    ))}
-                </ul>
-            )}
+                />
+
+
+                {
+                    showData && (
+
+                        <div className='absolute bg-b-gray-3 w-full mt-2 rounded-[5] z-50'>
+                            {
+                                option.map((item, index) => (
+                                    <div key={index} className='bg-b-gray-2 flex flex-col m-1 p-1 rounded-[5]'>
+                                        <div>{item.name}</div>
+                                    </div>
+
+                                ))
+
+                            }
+
+                        </div>
+                    )
+                }
+            </div>
+
         </div>
     )
 }
