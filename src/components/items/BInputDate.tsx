@@ -25,7 +25,7 @@ const BInputDate = ({ title, value, placeholder, setValue }: BInputProps) => {
                 placeholder={placeholder}
                 onChange={(e) => getSetValue(e.target.value)}
                 value={value}
-                className='w-full border bg-b-gray-2/35 border-b-gray-3/40 px-2 py-1.5 text-[14px] rounded-[5]'
+                className='w-full border bg-b-gray-2/35 border-b-gray-3/40 px-2 py-1.5 text-[14px] text-b-gray-4 rounded-[5]'
                 type="date"
             />
         </div>
