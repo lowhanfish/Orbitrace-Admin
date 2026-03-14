@@ -19,7 +19,6 @@ const BInputAutocomplete = ({ title, placeholder, BSetValue, DataObj, label = ""
 
     const getListData = (e: any) => {
         setText(e)
-        console.log(e.toLowerCase)
         if (e.trim() !== "") {
             const search = DataObj.filter((item: any) => {
                 return item.name.toLowerCase().includes(e.toLowerCase())
@@ -37,7 +36,6 @@ const BInputAutocomplete = ({ title, placeholder, BSetValue, DataObj, label = ""
     }
 
     const handleClickACT = () => {
-        console.log("wah div di click")
         setShowData(true)
     }
 
@@ -52,7 +50,6 @@ const BInputAutocomplete = ({ title, placeholder, BSetValue, DataObj, label = ""
     useEffect(() => {
         const handleClickOutACT = (e: MouseEvent) => {
             if (boxRef.current && !boxRef.current.contains(e.target as Node)) {
-                console.log("Wak diluar div ni")
                 setShowData(false)
             }
         }
@@ -82,7 +79,6 @@ const BInputAutocomplete = ({ title, placeholder, BSetValue, DataObj, label = ""
                 />
                 {
                     showData && (
-
                         <div className='absolute bg-b-gray-3 w-full mt-2 rounded-[6] z-50 shadow-md'>
                             {
                                 option.map((item: any, index: any) => (
