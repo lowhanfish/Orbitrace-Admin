@@ -1,70 +1,35 @@
 "use client"
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, Dispatch, SetStateAction } from 'react'
 
 interface BInputAutocompleteProps {
     title: string;
     placeholder: string;
-    suggestions: string[]; // Daftar pilihan (misal: nama kota atau kategori)
-    value: string;
-    setValue: (val: string) => void;
-
+    BSetValue: Dispatch<SetStateAction<string | number>>;
+    DataObj: any,
+    label: string,
+    BKey: string | number
 }
 
-const DataObj = [
-    {
-        name: "Kiken S batara, S.Si.,MT",
-        role: "Fullstack AI Engineer",
-        address: "Jl. Beringin No. 31",
-        status: "reject"
-    },
-    {
-        name: "Riswan M Rizal. ST",
-        role: "Fullstack AI Engineer",
-        address: "Jl. Beringin No. 31",
-        status: "pending"
-    },
-    {
-        name: "Muh. Hidayat Dermawan. ST",
-        role: "Fullstack AI Engineer",
-        address: "Jl. Beringin No. 31",
-        status: "approve"
-    },
-    {
-        name: "Asrif Fajar Hidayat",
-        role: "Fullstack AI Engineer",
-        address: "Jl. Beringin No. 31",
-        status: "pending"
-    },
-    {
-        name: "Fajar Syahputra, ST",
-        role: "Fullstack AI Engineer",
-        address: "Jl. Beringin No. 31",
-        status: "pending"
-    },
-]
-
-const BInputAutocomplete = ({ title, placeholder }: BInputAutocompleteProps) => {
+const BInputAutocomplete = ({ title, placeholder, BSetValue, DataObj, label = "", BKey }: BInputAutocompleteProps) => {
 
     const boxRef = useRef<HTMLDivElement>(null)
-    const [value, setValue] = useState<string>("")
     const [option, setOption] = useState<any>([])
     const [showData, setShowData] = useState<boolean>(false)
+    const [text, setText] = useState<string>("")
 
-    const getValue = (e: any) => {
-        setValue(e)
+    const getListData = (e: any) => {
+        setText(e)
         console.log(e.toLowerCase)
         if (e.trim() !== "") {
-            const search = DataObj.filter((item) => {
+            const search = DataObj.filter((item: any) => {
                 return item.name.toLowerCase().includes(e.toLowerCase())
             })
-                .map((item) => ({
+                .map((item: any) => ({
                     name: item.name,
                     role: item.role,
                     address: item.address,
                     status: item.status,
                 }))
-
-
             setOption(search)
         } else {
             setOption(DataObj)
@@ -74,6 +39,14 @@ const BInputAutocomplete = ({ title, placeholder }: BInputAutocompleteProps) => 
     const handleClickACT = () => {
         console.log("wah div di click")
         setShowData(true)
+    }
+
+    const selectValue = (item: any) => {
+        setText(item[label]);
+        if (BSetValue) {
+            BSetValue(item[BKey]);
+        }
+        setShowData(false);
     }
 
     useEffect(() => {
@@ -90,12 +63,9 @@ const BInputAutocomplete = ({ title, placeholder }: BInputAutocompleteProps) => 
 
     }, [])
 
-
     useEffect(() => {
         setOption(DataObj)
     }, [])
-
-
 
     return (
         <div
@@ -106,27 +76,21 @@ const BInputAutocomplete = ({ title, placeholder }: BInputAutocompleteProps) => 
                 <span className='text-[12px] text-b-gray-3 font-roboto'>{title}</span>
                 <input
                     placeholder={placeholder}
-                    value={value}
+                    value={text}
                     className='w-full border bg-b-gray-2/35 border-b-gray-3/40 px-2 py-1.5 text-[14px] rounded-[5]'
-                    onChange={(e) => getValue(e.target?.value)}
-
+                    onChange={(e) => getListData(e.target?.value)}
                 />
-
-
                 {
                     showData && (
 
-                        <div className='absolute bg-b-gray-3 w-full mt-2 rounded-[5] z-50'>
+                        <div className='absolute bg-b-gray-3 w-full mt-2 rounded-[6] z-50 shadow-md'>
                             {
-                                option.map((item, index) => (
-                                    <div key={index} className='bg-b-gray-2 flex flex-col m-1 p-1 rounded-[5]'>
-                                        <div>{item.name}</div>
+                                option.map((item: any, index: any) => (
+                                    <div onClick={() => selectValue(item)} key={index} className='bg-b-gray-2 hover:bg-b-gray-1 flex flex-col m-1 p-1 rounded-[3] cursor-pointer'>
+                                        <div className='text-[14px]'>{item.name}</div>
                                     </div>
-
                                 ))
-
                             }
-
                         </div>
                     )
                 }
