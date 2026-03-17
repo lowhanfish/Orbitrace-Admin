@@ -10,25 +10,21 @@ interface BInputAutocompleteProps {
     BKey: string | number
 }
 
-const BInputAutocomplete = ({ title, placeholder, BSetValue, DataObj, label = "", BKey }: BInputAutocompleteProps) => {
+const BInputAutocomplete = ({ title, placeholder, BSetValue, DataObj, label, BKey }: BInputAutocompleteProps) => {
 
     const boxRef = useRef<HTMLDivElement>(null)
     const [option, setOption] = useState<any>([])
     const [showData, setShowData] = useState<boolean>(false)
     const [text, setText] = useState<string>("")
+    const [highlightIndex, setHighlightIndex] = useState<number>(-1)
 
     const getListData = (e: any) => {
         setText(e)
         if (e.trim() !== "") {
             const search = DataObj.filter((item: any) => {
-                return item.name.toLowerCase().includes(e.toLowerCase())
+                return item[label].toLowerCase().includes(e.toLowerCase())
             })
-                .map((item: any) => ({
-                    name: item.name,
-                    role: item.role,
-                    address: item.address,
-                    status: item.status,
-                }))
+                .map((item: any) => (item))
             setOption(search)
         } else {
             setOption(DataObj)
@@ -40,11 +36,32 @@ const BInputAutocomplete = ({ title, placeholder, BSetValue, DataObj, label = ""
     }
 
     const selectValue = (item: any) => {
+        setShowData(false);
         setText(item[label]);
+        setHighlightIndex(-1);
         if (BSetValue) {
             BSetValue(item[BKey]);
         }
-        setShowData(false);
+    }
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (!showData) return;
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            setHighlightIndex((prev) => (prev < option.length - 1 ? prev + 1 : 0));
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            setHighlightIndex((prev) => (prev > 0 ? prev - 1 : option.length - 1));
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (highlightIndex >= 0 && highlightIndex < option.length) {
+                selectValue(option[highlightIndex]);
+            }
+        } else if (e.key === 'Escape') {
+            setShowData(false);
+            setHighlightIndex(-1);
+        }
     }
 
     useEffect(() => {
@@ -66,12 +83,13 @@ const BInputAutocomplete = ({ title, placeholder, BSetValue, DataObj, label = ""
 
     return (
         <div
-            ref={boxRef}
-            onClick={handleClickACT}
+
         >
-            <div className='w-full relative'>
+            <div ref={boxRef} className='w-full relative'>
                 <span className='text-[12px] text-b-gray-3 font-roboto'>{title}</span>
                 <input
+                    onClick={handleClickACT}
+                    onKeyDown={handleKeyDown}
                     placeholder={placeholder}
                     value={text}
                     className='w-full border bg-b-gray-2/35 border-b-gray-3/40 px-2 py-1.5 text-[14px] rounded-[5]'
@@ -79,11 +97,15 @@ const BInputAutocomplete = ({ title, placeholder, BSetValue, DataObj, label = ""
                 />
                 {
                     showData && (
-                        <div className='absolute bg-b-gray-3 w-full mt-2 rounded-[6] z-50 shadow-md'>
+                        <div className='absolute bg-b-gray-3 w-full mt-2 rounded-[6] z-50 shadow-lg'>
                             {
                                 option.map((item: any, index: any) => (
-                                    <div onClick={() => selectValue(item)} key={index} className='bg-b-gray-2 hover:bg-b-gray-1 flex flex-col m-1 p-1 rounded-[3] cursor-pointer'>
-                                        <div className='text-[14px]'>{item.name}</div>
+                                    <div onMouseDown={(e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        selectValue(item);
+                                    }} key={index} className={`${index === highlightIndex ? 'bg-b-gray-1' : 'bg-b-gray-2'} hover:bg-b-gray-1 flex flex-col m-1 p-1 rounded-[3] cursor-pointer`}>
+                                        <div className='text-[14px]'>{item[label]}</div>
                                     </div>
                                 ))
                             }

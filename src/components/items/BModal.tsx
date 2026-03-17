@@ -1,5 +1,5 @@
 import { useState, useEffect, ReactNode, Dispatch, SetStateAction } from 'react'
-
+import { BsX } from "react-icons/bs";
 
 interface BModalProps {
     title?: string,
@@ -38,8 +38,10 @@ const BModal = ({ title, size, openModal, setOpenModal, children }: BModalProps)
                                     <div className='flex-1'>
                                         <p className='text-gray-200'>{title}</p>
                                     </div>
-                                    <button onClick={() => setOpenModal(!openModal)} className='w-5 h-5 bg-b-gray-5 hover:bg-b-gray-3 rounded-full flex justify-center items-center'>
-                                        <p className='text-b-gray-2'>X</p>
+                                    <button onClick={() => setOpenModal(!openModal)} className='w-5 h-5 bg-b-gray-5 hover:bg-b-gray-3 rounded-full flex justify-center items-center cursor-pointer'>
+                                        <p className='text-b-gray-2'>
+                                            <BsX />
+                                        </p>
                                     </button>
                                 </div>
                                 <div className='p-2'>
