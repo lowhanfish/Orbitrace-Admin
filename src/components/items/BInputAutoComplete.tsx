@@ -17,6 +17,7 @@ const BInputAutocomplete = ({ title, placeholder, BSetValue, DataObj, label, BKe
     const [showData, setShowData] = useState<boolean>(false)
     const [text, setText] = useState<string>("")
     const [highlightIndex, setHighlightIndex] = useState<number>(-1)
+    const [showClear, setShowClear] = useState<boolean>(false)
 
     const getListData = (e: any) => {
         setText(e)
@@ -36,6 +37,7 @@ const BInputAutocomplete = ({ title, placeholder, BSetValue, DataObj, label, BKe
     }
 
     const selectValue = (item: any) => {
+        setShowClear(true)
         setShowData(false);
         setText(item[label]);
         setHighlightIndex(-1);
@@ -45,6 +47,7 @@ const BInputAutocomplete = ({ title, placeholder, BSetValue, DataObj, label, BKe
     }
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+
         if (!showData) return;
 
         if (e.key === 'ArrowDown') {
@@ -64,6 +67,23 @@ const BInputAutocomplete = ({ title, placeholder, BSetValue, DataObj, label, BKe
         }
     }
 
+    const handleClearData = (e: any) => {
+        console.log(e.target.value)
+        if (e.target.value) {
+            setShowClear(true)
+        } else {
+            setShowClear(false)
+        }
+    }
+
+    const clearTextData = () => {
+        BSetValue("")
+        setText("");
+        setShowData(true);
+        setShowClear(false)
+        getListData("")
+    }
+
     useEffect(() => {
         const handleClickOutACT = (e: MouseEvent) => {
             if (boxRef.current && !boxRef.current.contains(e.target as Node)) {
@@ -78,23 +98,39 @@ const BInputAutocomplete = ({ title, placeholder, BSetValue, DataObj, label, BKe
     }, [])
 
     useEffect(() => {
+        // handleClearData();
         setOption(DataObj)
     }, [])
 
     return (
-        <div
-
-        >
+        <div>
             <div ref={boxRef} className='w-full relative'>
                 <span className='text-[12px] text-b-gray-3 font-roboto'>{title}</span>
-                <input
-                    onClick={handleClickACT}
-                    onKeyDown={handleKeyDown}
-                    placeholder={placeholder}
-                    value={text}
-                    className='w-full border bg-b-gray-2/35 border-b-gray-3/40 px-2 py-1.5 text-[14px] rounded-[5]'
-                    onChange={(e) => getListData(e.target?.value)}
-                />
+                <div className='relative flex justify-center items-center'>
+                    <input
+                        onClick={handleClickACT}
+                        onKeyDown={handleKeyDown}
+                        onKeyUp={handleClearData}
+                        placeholder={placeholder}
+                        value={text}
+                        className='w-full border bg-b-gray-2/35 border-b-gray-3/40 px-2 py-1.5 text-[14px] rounded-[5]'
+                        onChange={(e) => getListData(e.target?.value)}
+                    />
+                    {
+                        showClear && (
+                            <button
+                                onClick={() => clearTextData()}
+                                className='absolute right-2 
+                                    text-[12px] font-semibold text-b-gray-4 
+                                    rounded-full bg-b-gray-2 
+                                    hover:bg-b-gray-2/70 w-6 h-6 
+                                    cursor-pointer shadow-sm'>
+                                x
+                            </button>
+                        )
+                    }
+
+                </div>
                 {
                     showData && (
                         <div className='absolute bg-b-gray-3 w-full mt-2 rounded-[6] z-50 shadow-lg'>

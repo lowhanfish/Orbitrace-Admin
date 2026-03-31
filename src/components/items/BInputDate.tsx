@@ -11,10 +11,6 @@ interface BInputProps {
 
 const BInputDate = ({ title, value, placeholder, setValue }: BInputProps) => {
 
-
-
-
-
     const getSetValue = (val: any) => {
         setValue(val)
     }
