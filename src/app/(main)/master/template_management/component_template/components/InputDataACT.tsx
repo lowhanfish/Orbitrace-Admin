@@ -42,6 +42,9 @@ const dataArrObj = [
     },
 ]
 
+// API UNTUK USER
+// https://fake-json-api.mock.beeceptor.com/users
+
 const InputData = () => {
 
     const [data, setData] = useState<string | number>("")

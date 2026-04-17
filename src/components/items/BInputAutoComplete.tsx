@@ -68,10 +68,14 @@ const BInputAutocomplete = ({ title, placeholder, BSetValue, DataObj, label, BKe
     }
 
     const handleClearData = (e: any) => {
+
         console.log(e.target.value)
         if (e.target.value) {
+            console.log("data ada")
+            getListData(e.target?.value)
             setShowClear(true)
         } else {
+            console.log("data kosong")
             setShowClear(false)
         }
     }
