@@ -5,12 +5,13 @@ interface BInputAutocompleteProps {
     title: string;
     placeholder: string;
     BSetValue: Dispatch<SetStateAction<string | number>>;
-    DataObj: any,
-    label: string,
+    BGetText: Dispatch<SetStateAction<string | number>>;
+    DataObj: any;
+    label: string;
     BKey: string | number
 }
 
-const BInputAutocomplete = ({ title, placeholder, BSetValue, DataObj, label, BKey }: BInputAutocompleteProps) => {
+const BInputAutocomplete = ({ title, placeholder, BSetValue, BGetText, DataObj, label, BKey }: BInputAutocompleteProps) => {
 
     const boxRef = useRef<HTMLDivElement>(null)
     const [option, setOption] = useState<any>([])
@@ -21,6 +22,8 @@ const BInputAutocomplete = ({ title, placeholder, BSetValue, DataObj, label, BKe
 
     const getListData = (e: any) => {
         setText(e)
+        BGetText(e)
+
         if (e.trim() !== "") {
             const search = DataObj.filter((item: any) => {
                 return item[label].toLowerCase().includes(e.toLowerCase())
