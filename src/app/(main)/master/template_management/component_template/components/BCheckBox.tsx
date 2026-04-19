@@ -165,7 +165,6 @@ const codeString = `
 "use client"
 
 import { useState } from 'react'
-import CodeWrapper from './CodeWrapper'
 import BCheckBox from '@/components/items/BCheckBox'
 
 const InputDataRd = () => {
@@ -312,10 +311,6 @@ const InputDataRd = () => {
                     />
 
                 </div>
-            </div>
-
-            <div className='mt-5'>
-                <CodeWrapper codeString={codeString} />
             </div>
         </div>
     )

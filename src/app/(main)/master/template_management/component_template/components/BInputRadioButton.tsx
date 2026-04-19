@@ -155,7 +155,6 @@ const codeString = `
 "use client"
 
 import { useState } from 'react'
-import CodeWrapper from './CodeWrapper'
 import BRadioButton from '@/components/items/BRadioButton'
 
 const BInputRadioButton = () => {
@@ -292,10 +291,6 @@ const BInputRadioButton = () => {
                     />
 
                 </div>
-            </div>
-
-            <div className='mt-5'>
-                <CodeWrapper codeString={codeString} />
             </div>
         </div>
     )
