@@ -48,7 +48,7 @@ const dataArrObj = [
 const InputData = () => {
 
     const [data, setData] = useState<string | number>("")
-    const [type, getType] = useState<string | number>("")
+    const [btype, getType] = useState<string | number>("")
 
     return (
         <div className='flex flex-col bg-linear-to-r from-b-gray-1 to-50% to-b-gray-1/40 shadow-sm rounded-[5] px-3 py-3 mt-2'>
@@ -68,7 +68,9 @@ const InputData = () => {
             </div>
 
             <div>
+                <p className='text-[12px]'> Data Type : {btype}</p>
                 <p className='text-[12px]'> Data selected : {data}</p>
+
             </div>
 
             <div className='mt-5'>
@@ -128,7 +130,7 @@ const dataArrObj = [
 const InputData = () => {
 
     const [data, setData] = useState<string | number>("")
-    const [type, getType] = useState<string | number>("")
+    const [btype, getType] = useState<string | number>("")
 
     return (
         <div className='flex flex-col bg-linear-to-r from-b-gray-1 to-50% to-b-gray-1/40 shadow-sm rounded-[5] px-3 py-3 mt-2'>
@@ -148,6 +150,7 @@ const InputData = () => {
             </div>
 
             <div>
+                <p className='text-[12px]'> Data Type : {btype}</p>
                 <p className='text-[12px]'> Data selected : {data}</p>
             </div>
         </div>

@@ -3,6 +3,7 @@ import TextSeparate from '@/components/items/TextSeparate';
 import ListUser from './components/ListUser';
 import ListDocuments from './components/ListDocuments';
 import InputData from './components/InputData';
+import InputDataRd from './components/InputDataRd';
 import InputDataACT from './components/InputDataACT';
 import BTable from './components/BTable';
 
@@ -16,6 +17,9 @@ const page = () => {
 
             <TextSeparate title='Input / Field' />
             <InputData />
+
+            <TextSeparate title='CheckBox' />
+            <InputDataRd />
 
             <TextSeparate title='Auto COmplete' />
             <InputDataACT />
