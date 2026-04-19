@@ -3,7 +3,7 @@ import TextSeparate from '@/components/items/TextSeparate';
 import ListUser from './components/ListUser';
 import ListDocuments from './components/ListDocuments';
 import InputData from './components/InputData';
-import InputDataRd from './components/InputDataRd';
+import InputDataRd from './components/BCheckBox';
 import InputDataACT from './components/InputDataACT';
 import BTable from './components/BTable';
 
