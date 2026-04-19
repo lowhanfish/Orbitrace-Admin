@@ -8,9 +8,9 @@ import BInputDate from '@/components/items/BInputDate'
 
 const InputData = () => {
 
-    const [numberx, setNumberx] = useState("")
-    const [textx, setTextx] = useState("")
-    const [filex, setFilex] = useState<File | FileList | null>(null)
+    const [numberx, setNumberx] = useState<number | string>(0)
+    const [textx, setTextx] = useState<string | number>("")
+    const [filex, setFilex] = useState<File | File[] | null>(null);
     const [datex, setDatex] = useState(new Date().toISOString().split('T')[0]);
 
     const [form, setForm] = useState({
@@ -34,7 +34,12 @@ const InputData = () => {
                         placeholder='Data number'
                         type='number'
                         value={numberx}
-                        setValue={setNumberx} />
+                        onChange={(value) => {
+                            setNumberx(value)
+                        }}
+                    />
+                    <p className='text-[10px] pt-1.5'>Value : {numberx}</p>
+
                 </div>
                 <div className='col-span-3 '>
                     <BInput
@@ -42,24 +47,48 @@ const InputData = () => {
                         placeholder='Data text'
                         type='text'
                         value={textx}
-                        setValue={setTextx} />
+                        onChange={(value) => {
+                            setTextx(value)
+                        }}
+                    />
+                    <p className='text-[10px] pt-1.5'>Value : {textx}</p>
                 </div>
                 <div className='col-span-3 '>
                     <BInputFile
                         accept='image/*'
-                        onFileSelect={(file) => { setFilex(file); console.log(file) }}
                         placeholder='pilih file'
                         title='File Lampiran'
                         multiple={true}
+                        onFileSelect={(file) => {
+                            const finalData = (file instanceof FileList) ? Array.from(file) : file;
+                            setFilex(finalData);
+                            console.log(finalData);
+                        }}
                     />
+                    <div className='pt-1'>
+                        {filex && (
+                            (Array.isArray(filex) ? filex : [filex]).map((file, index) => (
+                                <p key={index} className="text-[10px]">
+                                    {file.name}
+                                </p>
+                            ))
+                        )}
+                    </div>
                 </div>
+
                 <div className='col-span-3 '>
                     <BInputDate
                         title='Data date'
                         placeholder='Data date'
                         value={datex}
-                        setValue={setDatex}
+                        onChange={
+                            (value) => {
+                                setDatex(value)
+                                console.log(value)
+                            }
+                        }
                     />
+                    <p className='text-[10px] pt-1.5'>Value : {datex}</p>
                 </div>
             </div>
 
@@ -78,17 +107,28 @@ const codeString = `
 "use client"
 
 import { useState } from 'react'
-import CodeWrapper from './CodeWrapper'
 import BInput from '@/components/items/BInput'
 import BInputFile from '@/components/items/BInputFile'
 import BInputDate from '@/components/items/BInputDate'
 
 const InputData = () => {
 
-    const [numberx, setNumberx] = useState("")
-    const [textx, setTextx] = useState("")
-    const [filex, setFilex] = useState<File | FileList | null>(null)
+    const [numberx, setNumberx] = useState<number | string>(0)
+    const [textx, setTextx] = useState<string | number>("")
+    const [filex, setFilex] = useState<File | File[] | null>(null);
     const [datex, setDatex] = useState(new Date().toISOString().split('T')[0]);
+
+    const [form, setForm] = useState({
+        name: "",
+        age: 0,
+        gender: "F"
+    })
+
+    const gender = [
+        { id: 1, gender: "Female", code: "F" },
+        { id: 2, gender: "Male", code: "M" },
+    ]
+
 
     return (
         <div className='flex flex-col bg-linear-to-r from-b-gray-1 to-50% to-b-gray-1/40 shadow-sm rounded-[5] px-3 py-3 mt-2'>
@@ -99,7 +139,12 @@ const InputData = () => {
                         placeholder='Data number'
                         type='number'
                         value={numberx}
-                        setValue={setNumberx} />
+                        onChange={(value) => {
+                            setNumberx(value)
+                        }}
+                    />
+                    <p className='text-[10px] pt-1.5'>Value : {numberx}</p>
+
                 </div>
                 <div className='col-span-3 '>
                     <BInput
@@ -107,24 +152,48 @@ const InputData = () => {
                         placeholder='Data text'
                         type='text'
                         value={textx}
-                        setValue={setTextx} />
+                        onChange={(value) => {
+                            setTextx(value)
+                        }}
+                    />
+                    <p className='text-[10px] pt-1.5'>Value : {textx}</p>
                 </div>
                 <div className='col-span-3 '>
                     <BInputFile
                         accept='image/*'
-                        onFileSelect={(file) => { setFilex(file); console.log(file) }}
                         placeholder='pilih file'
                         title='File Lampiran'
                         multiple={true}
+                        onFileSelect={(file) => {
+                            const finalData = (file instanceof FileList) ? Array.from(file) : file;
+                            setFilex(finalData);
+                            console.log(finalData);
+                        }}
                     />
+                    <div className='pt-1'>
+                        {filex && (
+                            (Array.isArray(filex) ? filex : [filex]).map((file, index) => (
+                                <p key={index} className="text-[10px]">
+                                    {file.name}
+                                </p>
+                            ))
+                        )}
+                    </div>
                 </div>
+
                 <div className='col-span-3 '>
                     <BInputDate
                         title='Data date'
                         placeholder='Data date'
                         value={datex}
-                        setValue={setDatex}
+                        onChange={
+                            (value) => {
+                                setDatex(value)
+                                console.log(value)
+                            }
+                        }
                     />
+                    <p className='text-[10px] pt-1.5'>Value : {datex}</p>
                 </div>
             </div>
         </div>
