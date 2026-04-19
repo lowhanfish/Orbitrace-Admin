@@ -87,6 +87,7 @@ const codeString = `
 "use client"
 
 import { useState } from 'react'
+import CodeWrapper from './CodeWrapper'
 import BInputAutocomplete from '@/components/items/BInputAutoComplete'
 
 const dataArrObj = [
@@ -127,6 +128,9 @@ const dataArrObj = [
     },
 ]
 
+// API UNTUK USER
+// https://fake-json-api.mock.beeceptor.com/users
+
 const InputData = () => {
 
     const [data, setData] = useState<string | number>("")
@@ -152,6 +156,11 @@ const InputData = () => {
             <div>
                 <p className='text-[12px]'> Data Type : {btype}</p>
                 <p className='text-[12px]'> Data selected : {data}</p>
+
+            </div>
+
+            <div className='mt-5'>
+                <CodeWrapper codeString={codeString} />
             </div>
         </div>
     )

@@ -91,8 +91,8 @@ const InputDataRd = () => {
                                 console.log(value)
                                 setData(checked); //Set your data here
                             }
-
-                        } size="xs" color='gray' title='color : gray '
+                        }
+                        size="xs" color='gray' title='color : gray '
                     />
 
                     <BCheckBox
@@ -104,8 +104,8 @@ const InputDataRd = () => {
                                 console.log(value)
                                 setData(checked); //Set your data here
                             }
-
-                        } size="xs" color='yellow' title='color : yellow '
+                        }
+                        size="xs" color='yellow' title='color : yellow '
                     />
 
                     <BCheckBox
@@ -117,8 +117,8 @@ const InputDataRd = () => {
                                 console.log(value)
                                 setData(checked); //Set your data here
                             }
-
-                        } size="xs" color='green' title='color : green '
+                        }
+                        size="xs" color='green' title='color : green '
                     />
 
                     <BCheckBox
@@ -130,8 +130,8 @@ const InputDataRd = () => {
                                 console.log(value)
                                 setData(checked); //Set your data here
                             }
-
-                        } size="xs" color='blue' title='color : blue '
+                        }
+                        size="xs" color='blue' title='color : blue '
                     />
 
                     <BCheckBox
@@ -143,8 +143,8 @@ const InputDataRd = () => {
                                 console.log(value)
                                 setData(checked); //Set your data here
                             }
-
-                        } size="xs" color='red' title='color : red '
+                        }
+                        size="xs" color='red' title='color : red '
                     />
 
                 </div>
