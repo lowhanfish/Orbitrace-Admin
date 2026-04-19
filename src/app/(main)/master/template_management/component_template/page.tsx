@@ -3,9 +3,11 @@ import TextSeparate from '@/components/items/TextSeparate';
 import ListUser from './components/ListUser';
 import ListDocuments from './components/ListDocuments';
 import InputData from './components/InputData';
-import InputDataRd from './components/BCheckBox';
+import BCheckBox from './components/BCheckBox';
 import InputDataACT from './components/InputDataACT';
 import BTable from './components/BTable';
+import BInputRadioButton from './components/BInputRadioButton';
+
 
 
 
@@ -19,7 +21,10 @@ const page = () => {
             <InputData />
 
             <TextSeparate title='CheckBox' />
-            <InputDataRd />
+            <BCheckBox />
+
+            <TextSeparate title='RadioButton' />
+            <BInputRadioButton />
 
             <TextSeparate title='Auto COmplete' />
             <InputDataACT />
