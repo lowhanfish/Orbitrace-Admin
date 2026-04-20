@@ -7,6 +7,10 @@ import BCheckBox from './components/BCheckBox';
 import InputDataACT from './components/InputDataACT';
 import BTable from './components/BTable';
 import BInputRadioButton from './components/BInputRadioButton';
+import ListModal from './components/ListModal';
+import ListButton from './components/ListButton';
+
+
 
 
 
@@ -37,6 +41,12 @@ const page = () => {
 
             <TextSeparate title='Table List' />
             <BTable />
+
+            <TextSeparate title='Button' />
+            <ListButton />
+
+            <TextSeparate title='Modal / Popup' />
+            <ListModal />
 
 
 
