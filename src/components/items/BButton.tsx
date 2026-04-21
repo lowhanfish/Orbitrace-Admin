@@ -90,6 +90,41 @@ const neoMap: Record<string, string> = {
         `,
 }
 
+
+const neonMap: Record<string, string> = {
+    gray: `
+        bg-linear-to-r from-slate-700 via-gray-500 to-slate-800
+        shadow-[0_0_20px_rgba(100,116,139,0.4)]
+        hover:shadow-[0_0_35px_rgba(148,163,184,0.7)]
+        border-t border-white/10
+    `,
+    blue: `
+        bg-linear-to-r from-indigo-600 via-cyan-400 to-blue-700
+        shadow-[0_0_20px_rgba(34,211,238,0.5)]
+        hover:shadow-[0_0_40px_rgba(6,182,212,0.8)]
+        border-t border-cyan-200/20
+    `,
+    green: `
+        bg-linear-to-r from-teal-600 via-emerald-400 to-green-700
+        shadow-[0_0_20px_rgba(52,211,153,0.5)]
+        hover:shadow-[0_0_40px_rgba(16,185,129,0.8)]
+        border-t border-emerald-200/20
+    `,
+    yellow: `
+        bg-linear-to-r from-orange-500 via-yellow-300 to-amber-600
+        shadow-[0_0_20px_rgba(253,224,71,0.5)]
+        hover:shadow-[0_0_40px_rgba(251,191,36,0.8)]
+        border-t border-yellow-100/30
+        text-gray-900
+    `,
+    red: `
+        bg-linear-to-r from-purple-600 via-rose-500 to-red-700
+        shadow-[0_0_20px_rgba(244,63,94,0.5)]
+        hover:shadow-[0_0_40px_rgba(225,29,72,0.8)]
+        border-t border-rose-200/20
+    `,
+}
+
 const sizeMap: Record<string, string> = {
     xs: 'h-5',
     sm: 'h-7',
@@ -117,11 +152,11 @@ const BButton = ({ color, children, size, mode, onClick }: BButtonProps) => {
                             mode == 'neo' ?
                                 neoMap[color]
                                 :
-                                colorMap[color]
+                                mode == 'neon' ?
+                                    neonMap[color]
+                                    :
+                                    colorMap[color]
                     }
-
-
-                
                 ${sizeMap[size]}
                 w-full
                 transition-all duration-300 hover:scale-102
