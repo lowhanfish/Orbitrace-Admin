@@ -26,35 +26,35 @@ const treeDMap: Record<string, string> = {
 }
 const glossyMap: Record<string, string> = {
     gray: `
-    rounded-full font-semibold text-white
+    rounded-full text-white
     bg-linear-to-b from-gray-400 via-gray-500 to-gray-600
     shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),0_4px_8px_rgba(0,0,0,0.2)]
     border-t border-white/30
     hover:brightness-110 active:scale-95 transition-all
     `,
     blue: `
-    rounded-full font-semibold text-white
+    rounded-full text-white
     bg-linear-to-b from-b-blue-6 via-b-blue-5 to-b-blue-4
     shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),0_4px_8px_rgba(0,0,0,0.2)]
     border-t border-white/30
     hover:brightness-110 active:scale-95 transition-all
     `,
     green: `
-    rounded-full font-semibold text-white
+    rounded-full text-white
     bg-linear-to-b from-b-green-6 via-b-green-5 to-b-green-4
     shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),0_4px_8px_rgba(0,0,0,0.2)]
     border-t border-white/30
     hover:brightness-110 active:scale-95 transition-all
     `,
     yellow: `
-    rounded-full font-semibold text-white
+    rounded-full text-white
     bg-linear-to-b from-b-yellow-6 via-b-yellow-5 to-b-yellow-4
     shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),0_4px_8px_rgba(0,0,0,0.2)]
     border-t border-white/30
     hover:brightness-110 active:scale-95 transition-all
     `,
     red: `
-    rounded-full font-semibold text-white
+    rounded-full text-white
     bg-linear-to-b from-b-red-6 via-b-red-5 to-b-red-4
     shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),0_4px_8px_rgba(0,0,0,0.2)]
     border-t border-white/30
