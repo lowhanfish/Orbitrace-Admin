@@ -9,26 +9,29 @@ const page = () => {
     const [textx, setTextx] = useState<string | number>("")
 
     return (
-        <main className=" h-screen w-full p-2 bg-linear-to-r from-b-gray-4 via-blue-200 to-black">
+        <main className=" h-screen w-full p-2 md:px-20 bg-black">
 
-            <div className='relative h-full w-full border-2 border-b-gray-1/50 rounded-[20]'>
+            <div className='relative h-full w-full shadow-2xl rounded-[20]'>
 
                 <Image
-                    src="/images/bg1.webp"
+                    src="/images/bg.png"
                     alt='Background'
                     priority
                     fill
                     className='object-cover z-0 rounded-[20] shadow-lg opacity-90'
                 />
                 <div className='relative z-10 grid grid-cols-12 h-full justify-center items-center md:justify-normal md:items-stretch'>
-                    <div className='col-span-6 hidden md:block'>
+                    <div className='col-span-6 hidden md:block p-20'>
+                        <div className='flex flex-col justify-center items-center h-full'>
+                            <p className='text-white/80 text-[50px] text-shadow-2xs'>ORBI TRACE</p>
+                            <p className='text-white/80 text-[16px] text-shadow-2xs'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam sed quo nemo dignissimos non accusamus beatae nam ipsam vel sint? Sequi fugiat adipisci magni, in vel accusamus excepturi nemo! Voluptatibus?</p>
 
-
+                        </div>
 
                     </div>
                     <div className='col-span-12 md:col-span-6 p-5 md:p-0'>
-                        <div className='md:h-full'>
-                            <div className='bg-white/10 p-5 md:px-30 md:py-15 backdrop-blur-sm md:border-l-2 border-b-gray-1/50 h-full flex flex-col gap-1 md:rounded-r-[20]'>
+                        <div className='md:h-full p-3'>
+                            <div className='bg-white/10 p-5 md:px-30 md:py-15 backdrop-blur-sm border-b-gray-1/50 h-full flex flex-col gap-1 md:rounded-[20]'>
 
                                 <div className='bg-white/20 px-10 py-10 md:px-20 md:py-10 backdrop-blur-sm border-2 border-b-gray-1/50 h-full flex flex-col gap-1 rounded-[10] shadow-lg'>
 
@@ -36,7 +39,7 @@ const page = () => {
                                         <Image
                                             src="/images/icon_light.png"
                                             alt='Logo'
-                                            width={300}
+                                            width={200}
                                             height={100}
                                             className='object-cover'
 
