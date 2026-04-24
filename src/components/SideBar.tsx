@@ -30,7 +30,7 @@ const SideBar = () => {
     return (
 
         <div className={`
-            transition-all duration-300 ease-in-out
+            transition-all duration-300 ease-in-out z-50
             ${(screenx.screen === "Mobile" || screenx.screen === "Tablet") && "fixed h-full"}
             ${isSideBarOpen ? 'translate-x-0 opacity-100 w-70 md:w-65' : '-translate-x-full opacity-0 w-0'}
         
@@ -43,8 +43,15 @@ const SideBar = () => {
                 left-0 z-10
                 transition-all duration-300 ease-in-out
                 ${isSideBarOpen ? 'translate-x-0 ' : '-translate-x-full'}
+
+                 ${(screenx.screen === "Mobile" || screenx.screen === "Tablet") ?
+                    "bg-b-gray-1/70 backdrop-blur-sm"
+                    :
+                    "bg-linear-to-b from-b-gray-1 from-5% to-b-gray-1/20"
+
+                }
             
-                bg-linear-to-b from-b-gray-1 from-5% to-b-gray-1/20 shadow-md 
+                 shadow-md 
                 w-full h-full rounded-[10] px-2 py-5 overflow-y-scroll`
             }>
                 {
@@ -95,6 +102,8 @@ const Submenu = ({ data, level }: { data: dataProps, level: number }) => {
                     (
                         <button onClick={() => setIsDropDown(!isDropDown)} className={getContainerClass() + ` w-full`}>
                             <div className='flex items-center w-full'>
+
+
                                 {/* Render Icon untuk Level 1 */}
                                 {level === 1 && data.icon && (
                                     <div className="text-lg mr-2 text-b-gray-5">{data.icon}</div>

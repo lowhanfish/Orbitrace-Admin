@@ -1,15 +1,8 @@
 
 import Image from 'next/image'
-
-
-
 import FormLogin from './component/FormLogin'
 
-
-
-
 const page = () => {
-
 
     return (
         <main className=" h-screen w-full p-2 md:px-20 bg-black">
@@ -51,6 +44,7 @@ const page = () => {
                             <div className='bg-black/10 p-5 md:px-30 md:py-15 backdrop-blur-sm border-12 border-black/20 h-full flex flex-col gap-1 md:rounded-[20]'>
 
                                 <FormLogin />
+
                             </div>
                         </div>
 

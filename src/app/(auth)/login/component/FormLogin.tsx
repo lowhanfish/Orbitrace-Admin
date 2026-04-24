@@ -4,11 +4,12 @@ import { useState } from 'react'
 
 import BButton from '@/components/items/BButton'
 import Link from 'next/link'
-import { BsEyeFill } from "react-icons/bs";
+import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 
 
 const FormLogin = () => {
-    const [textx, setTextx] = useState<string | number>("")
+    const [showPassword, setShowPassword] = useState<boolean>(false);
+    const [typePassword, setTypePassword] = useState<string>('password');
 
     const LoginBtn = () => {
 
@@ -29,7 +30,7 @@ const FormLogin = () => {
                     />
                 </div>
 
-                <div>
+                <div className=''>
                     <div className='pt-5 md:pt-5'>
                         <p className='text-white text-[12px]'>Username</p>
                         <input type="text"
@@ -38,13 +39,28 @@ const FormLogin = () => {
                     </div>
                     <div className='pt-2'>
                         <p className='text-white text-[12px]'>Password</p>
-                        <input type="password"
-                            className='bg-white/2 backdrop-blur-sm h-10 w-full rounded-[20] px-3 border-2 border-b-blue-3 text-[12px] text-white'
-                        />
+
+                        <div className='flex justify-center items-center relative'>
+                            <input type={typePassword}
+                                className='bg-white/2 backdrop-blur-sm h-10 w-full rounded-[20] px-3 border-2 border-b-blue-3 text-[12px] text-white'
+                            />
 
 
+                            {
+                                showPassword ?
+                                    (
+                                        <div onClick={() => { setTypePassword('password'); setShowPassword(!showPassword) }} className='absolute right-2 cursor-pointer h-7 w-7  flex justify-center items-center rounded-full'>
+                                            <BsEyeSlashFill className='text-gray-100/70' />
+                                        </div>
+                                    ) :
+                                    (
+                                        <div onClick={() => { setTypePassword('text'); setShowPassword(!showPassword) }} className='absolute right-2 cursor-pointer h-7 w-7  flex justify-center items-center rounded-full'>
+                                            <BsEyeFill className='text-gray-100/70' />
+                                        </div>
+                                    )
+                            }
+                        </div>
                     </div>
-
 
                     <div className='mt-5'>
                         <Link href="/home">
