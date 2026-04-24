@@ -4,7 +4,9 @@
 import { useState } from 'react'
 import BInput from '@/components/items/BInput'
 import TextSeparate from '@/components/items/TextSeparate';
-import { BsGear } from "react-icons/bs";
+import { BsGear, BsWhatsapp, BsInstagram, BsFacebook, BsTiktok, BsTelegram } from "react-icons/bs";
+import BFrame from '@/components/items/BFrame';
+
 
 
 const InputData = () => {
@@ -33,7 +35,7 @@ const InputData = () => {
                     <div className='flex items-end text-[12px] text-center md:text-left'>
 
                         <div className='flex flex-row gap-1 items-center w-full justify-center md:justify-normal'>
-                            <span className='text-[30px] font-bold text-b-blue-2 '>06:37</span>
+                            <span className='text-[30px] font-bold text-b-blue-4 '>06:37</span>
                             <span className='text-[12px] '>PM</span>
                         </div>
                     </div>
@@ -84,9 +86,94 @@ const InputData = () => {
                 </div>
             </div>
 
-            <div className='flex flex-col bg-linear-to-r from-b-gray-1 to-50% to-b-gray-1/40 shadow-sm rounded-[5] px-3 py-3 mt-2'>
+            <div className='flex flex-col md:flex-row gap-3'>
+
+                <div className='pt-2 flex-1'>
+                    <BFrame>
+                        <div className='flex flex-row h-full p-2'>
+                            <div className='p-2 rounded-[5] border-2 border-b-gray-2/50 '>
+                                <BsWhatsapp className='w-10 h-10 text-b-green-1/70' />
+                            </div>
+                            <div className=''>
+                                <div className='h-full pl-5 pr-1 flex flex-col items-center justify-center'>
+                                    <p className='w-full text-[12px]'>WhatsApp Session</p>
+                                    <p className='w-full -mt-2 text-[35px] font-bold text-b-green-1/70'>78</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </BFrame>
+                </div>
+                <div className='pt-2 flex-1'>
+                    <BFrame>
+                        <div className='flex flex-row h-full p-2'>
+                            <div className='p-2 rounded-[5] border-2 border-b-gray-2/50 '>
+                                <BsInstagram className='w-10 h-10 text-b-red-1/70' />
+                            </div>
+                            <div className=''>
+                                <div className='h-full pl-5 pr-1 flex flex-col items-center justify-center'>
+                                    <p className='w-full text-[12px]'>Instagram Session</p>
+                                    <p className='w-full -mt-2 text-[35px] font-bold text-b-red-1/70'>42</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </BFrame>
+                </div>
+                <div className='pt-2 flex-1'>
+                    <BFrame>
+                        <div className='flex flex-row h-full p-2'>
+                            <div className='p-2 rounded-[5] border-2 border-b-gray-2/50 '>
+                                <BsFacebook className='w-10 h-10 text-b-blue-1/70' />
+                            </div>
+                            <div className=''>
+                                <div className='h-full pl-5 pr-1 flex flex-col items-center justify-center'>
+                                    <p className='w-full text-[12px]'>Session TikTok</p>
+                                    <p className='w-full -mt-2 text-[35px] font-bold text-b-blue-1/70'>78</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </BFrame>
+                </div>
+                <div className='pt-2 flex-1'>
+                    <BFrame>
+                        <div className='flex flex-row h-full p-2'>
+                            <div className='p-2 rounded-[5] border-2 border-b-gray-2/50 '>
+                                <BsTiktok className='w-10 h-10 text-b-gray-5/70' />
+                            </div>
+                            <div className=''>
+                                <div className='h-full pl-5 pr-1 flex flex-col items-center justify-center'>
+                                    <p className='w-full text-[12px]'>Session WhatsApp</p>
+                                    <p className='w-full -mt-2 text-[35px] font-bold text-b-gray-5'>120</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </BFrame>
+                </div>
+
+                <div className='pt-2 flex-1'>
+                    <BFrame>
+                        <div className='flex flex-row h-full p-2'>
+                            <div className='p-2 rounded-[5] border-2 border-b-gray-2/50 '>
+                                <BsTelegram className='w-10 h-10 text-b-blue-4/70' />
+                            </div>
+                            <div className=''>
+                                <div className='h-full pl-5 pr-1 flex flex-col items-center justify-center'>
+                                    <p className='w-full text-[12px]'>Session Telegram</p>
+                                    <p className='w-full -mt-2 text-[35px] font-bold text-b-blue-4'>12</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </BFrame>
+                </div>
+
+
 
             </div>
+
 
 
         </div>
