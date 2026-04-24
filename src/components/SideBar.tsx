@@ -1,20 +1,30 @@
 "use client"
 
 import { ReactNode, useEffect, useState } from 'react'
-import { BsFillHouseFill, BsPlayFill, BsDot } from "react-icons/bs";
+import { BsFillHouseFill, BsPlayFill, BsDot, BsFillLockFill } from "react-icons/bs";
+import BButton from '@/components/items/BButton'
 import routes from '@/utilities/routes';
 import { useStorex } from '@/store/useStorex';
 import Link from 'next/link';
 import useCheckScreen from '@/hooks/useCheckScreen';
+import { useRouter } from 'next/navigation'
+
 
 
 
 
 const SideBar = () => {
 
+    const router = useRouter()
+
     const screenx = useCheckScreen()
     const isSideBarOpen = useStorex(state => state.isSideBarOpen)
     const setIsSideBarStat = useStorex((state) => state.setIsSideBarStat)
+
+
+    const LogOut = () => {
+        router.push('/login');
+    }
 
 
     useEffect(() => {
@@ -22,7 +32,6 @@ const SideBar = () => {
             setIsSideBarStat(false)
         } else {
             setIsSideBarStat(true)
-
         }
 
     }, [screenx])
@@ -35,7 +44,6 @@ const SideBar = () => {
             ${isSideBarOpen ? 'translate-x-0 opacity-100 w-70 md:w-65' : '-translate-x-full opacity-0 w-0'}
         
         `}>
-            {/* <p>{screenx.screen}</p> */}
 
             <aside className={
                 `
@@ -61,6 +69,26 @@ const SideBar = () => {
                         </div>
                     ))
                 }
+
+                <div className='flex pl-2 pr-1 items-center py-3 pb-20'>
+
+                    <BButton
+                        color='blue'
+                        mode="glossy"
+                        size='sm'
+                        onClick={() => LogOut()}
+                    >
+                        <div className='flex gap-2'>
+                            <BsFillLockFill />
+                            <p className='text-white text-shadow-sm text-[12px]'>
+                                Logout
+                            </p>
+                        </div>
+                    </BButton>
+
+
+
+                </div>
 
 
             </aside>

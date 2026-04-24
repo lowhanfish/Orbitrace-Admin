@@ -27,10 +27,12 @@ const page = () => {
                                     <span className='text-[50px]'> Trace</span>
                                 </p>
                                 <p className='text-white/90 text-[12px] text-shadow-2xs text-shadow-black pr-20'>
-                                    Orbit Trace adalah mesin Omnichannel Retrieval-Augmented Generation Artificial Intelligence yang mengintegrasikan data faktual secara realtime ke Website, API, WhatsApp, Instagram, Facebook, hingga TikTok Live.
+                                    Orbit Trace is an Omnichannel Retrieval-Augmented Generation AI engine that integrates real-time factual data across Websites, APIs, WhatsApp, Instagram, Facebook, and TikTok Live.
+                                    {/* Orbit Trace adalah mesin Omnichannel Retrieval-Augmented Generation Artificial Intelligence yang mengintegrasikan data faktual secara realtime ke Website, API, WhatsApp, Instagram, Facebook, hingga TikTok Live. */}
                                 </p>
                                 <p className='text-white/90 text-[12px] text-shadow-2xs text-shadow-black pr-20 pt-3'>
-                                    Dengan akurasi mutlak tanpa halusinasi, sistem ini mengotomatisasi interaksi audiens di seluruh lini digital, memastikan organisasi Anda selalu responsif dan dominan di setiap platform
+                                    With absolute accuracy and zero hallucinations, this system automates audience interactions across all digital channels, ensuring your organization remains responsive and dominant on every platform.
+                                    {/* Dengan akurasi mutlak tanpa halusinasi, sistem ini mengotomatisasi interaksi audiens di seluruh lini digital, memastikan organisasi Anda selalu responsif dan dominan di setiap platform */}
                                 </p>
 
                                 <p className='pt-2'>By BeevoraLabs</p>

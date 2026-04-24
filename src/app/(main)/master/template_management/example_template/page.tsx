@@ -9,8 +9,8 @@ import BModal from '@/components/items/BModal';
 
 const InputData = () => {
 
-    const [numberx, setNumberx] = useState("")
-    const [textx, setTextx] = useState("")
+    const [numberx, setNumberx] = useState<number | string>(0)
+    const [textx, setTextx] = useState<string | number>("")
     const [open, setOpen] = useState(false);
 
 
@@ -43,6 +43,8 @@ const InputData = () => {
 
     return (
 
+
+
         <div>
             <TextSeparate title='Input / Field' />
             <div className='flex flex-col bg-linear-to-r from-b-gray-1 to-50% to-b-gray-1/40 shadow-sm rounded-[5] px-3 py-3 mt-2'>
@@ -53,7 +55,10 @@ const InputData = () => {
                             placeholder='Data number'
                             type='number'
                             value={numberx}
-                            setValue={setNumberx} />
+                            onChange={(value) => {
+                                setNumberx(value)
+                            }}
+                        />
                     </div>
                     <div className='col-span-6 '>
                         <BInput
@@ -61,7 +66,10 @@ const InputData = () => {
                             placeholder='Data text'
                             type='text'
                             value={textx}
-                            setValue={setTextx} />
+                            onChange={(value) => {
+                                setTextx(value)
+                            }}
+                        />
                     </div>
 
                 </div>
