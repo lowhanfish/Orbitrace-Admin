@@ -23,48 +23,52 @@ ChartJS.register(
 // Ubah interface agar bisa menerima beberapa list data
 interface ChartBarProps {
     labels: string[];
-    item1: string;   // Nama Kategori 1
-    item2: string;   // Nama Kategori 2
 }
 
+// rgba(2, 23, 80, 0.8)
 // rgba(151, 168, 215, 0.8)
 // rgba(108, 136, 214, 0.8)
 // rgba(69, 102, 193, 0.8)
 // rgba(37, 72, 168, 0.8)
 // rgba(37, 72, 168, 0.8)
 // rgba(5, 36, 120, 0.8)
-// rgba(2, 23, 80, 0.8)
 
 
 var data_sets = [
     {
+        label: "Zero",
+        data: [15, 25, 35, 12, 2],
+        backgroundColor: 'rgba(180, 185, 197, 0.8)',
+        borderRadius: 10,
+    },
+    {
         label: "First",
         data: [10, 20, 30, 12, 5],
-        backgroundColor: 'rgba(151, 168, 215, 0.8)', // Warna Biru Muda
+        backgroundColor: 'rgba(151, 168, 215, 0.8)',
         borderRadius: 10,
     },
     {
         label: "Seccond",
         data: [15, 25, 35, 14, 3],
-        backgroundColor: 'rgba(108, 136, 214, 0.8)', // Warna Biru Tua
+        backgroundColor: 'rgba(108, 136, 214, 0.8)',
         borderRadius: 10,
     },
     {
         label: "Third",
         data: [15, 25, 35, 12, 2],
-        backgroundColor: 'rgba(69, 102, 193, 0.8)', // Warna Biru Tua
+        backgroundColor: 'rgba(69, 102, 193, 0.8)',
         borderRadius: 10,
     },
     {
         label: "Fourth",
         data: [15, 25, 35, 12, 2],
-        backgroundColor: 'rgba(37, 72, 168, 0.8)', // Warna Biru Tua
+        backgroundColor: 'rgba(37, 72, 168, 0.8)',
         borderRadius: 10,
     },
     {
         label: "Fifth",
         data: [15, 25, 35, 12, 2],
-        backgroundColor: 'rgba(16, 49, 140, 0.8)', // Warna Biru Tua
+        backgroundColor: 'rgba(16, 49, 140, 0.8)',
         borderRadius: 10,
     },
     {
@@ -73,13 +77,11 @@ var data_sets = [
         backgroundColor: 'rgba(5, 36, 120, 0.8)', // Warna Biru Tua
         borderRadius: 10,
     },
-    {
-        label: "Sixth",
-        data: [15, 25, 35, 12, 2],
-        backgroundColor: 'rgba(2, 23, 80, 0.8)', // Warna Biru Tua
-        borderRadius: 10,
-    },
+
 ]
+
+
+
 
 const ChartBarGroup = ({ labels }: ChartBarProps) => {
     const data = {
@@ -88,7 +90,7 @@ const ChartBarGroup = ({ labels }: ChartBarProps) => {
     };
 
     return (
-        <div style={{ position: 'relative', height: '300px', width: '100%' }}>
+        <div style={{ position: 'relative', height: '350px', width: '100%' }}>
             <Bar
                 data={data}
                 options={{

@@ -46,7 +46,7 @@ const ChartBar = ({ labels, list, item }: ChartBarProps) => {
 
     // Tambahkan 'return' dan pembungkus div
     return (
-        <div style={{ position: 'relative', height: '300px', width: '100%' }}>
+        <div style={{ position: 'relative', height: '350px', width: '100%' }}>
 
             <Bar
                 data={data}
