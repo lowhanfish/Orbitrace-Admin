@@ -9,6 +9,8 @@ import BTable from './components/BTable';
 import BInputRadioButton from './components/BInputRadioButton';
 import ListModal from './components/ListModal';
 import ListButton from './components/ListButton';
+import ListChart from './components/ListChart';
+
 
 
 
@@ -47,6 +49,9 @@ const page = () => {
 
             <TextSeparate title='Modal / Popup' />
             <ListModal />
+
+            <TextSeparate title='Chart' />
+            <ListChart />
 
 
 

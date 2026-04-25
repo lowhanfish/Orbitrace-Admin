@@ -27,7 +27,7 @@ const InputData = () => {
                 <p className='text-[12px]'>Monitor key metrics and manage your platform</p>
             </div>
 
-            <div className='flex flex-col md:flex-row bg-linear-to-r from-b-gray-1 to-50% to-b-gray-1/40 shadow-sm rounded-[5] px-3 md:px-10 py-3 mt-2 text-b-gray-5'>
+            <div className='flex flex-col md:flex-row bg-linear-to-r from-b-gray-1 to-50% to-b-gray-2/90 shadow-sm rounded-[5] px-3 md:px-10 py-3 mt-2 text-b-gray-5'>
                 <div className='flex-1 text-[12px] text-center md:text-left'>
                     <p className='text-[20px] font-bold'>Good evening, Kiken S Batara</p>
                     <p className='text-[12px]'>Ready to make today productive! 🚀</p>

@@ -1,6 +1,8 @@
 import Header from '@/components/Header'
 import SideBar from '@/components/SideBar'
+import Image from 'next/image'
 import { ReactNode } from 'react'
+
 
 
 const layout = ({ children }: { children: ReactNode }) => {
@@ -14,8 +16,18 @@ const layout = ({ children }: { children: ReactNode }) => {
             <Header />
             <div className='flex gap-2 flex-1 mt-2' >
                 <SideBar />
+
+
                 <div className='w-full h-full relative'>
                     <div className='absolute overflow-y-scroll w-full h-full'>
+                        {/* <Image
+                            src="/images/bg-main2.jpg"
+                            alt='Background'
+                            priority
+                            fill
+                            className='object-cover -z-5 rounded-[20] opacity-90'
+
+                        /> */}
                         {children}
                     </div>
                 </div>

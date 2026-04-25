@@ -3,7 +3,7 @@ import { BsFillHouseFill, BsPlayFill, BsGrid, BsBuildings, BsRobot, BsGear } fro
 const routex = [
     {
         title : "Home",
-        path:"/",
+        path:"/home",
         icon : <BsFillHouseFill />,
         children : []
     },
