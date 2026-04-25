@@ -2,6 +2,8 @@
 import React, { useState } from 'react'
 import CodeWrapper from './CodeWrapper'
 import ChartBar from '@/components/items/chart/ChartBar'
+import ChartBarGroup from '@/components/items/chart/ChartBarGroup'
+
 
 
 
@@ -20,7 +22,8 @@ const ListButton = () => {
                 </div>
 
                 <div className='col-span-4 flex flex-col md:flex-row  gap-2 bg-b-gray-1 p-2 rounded-[10] border border-b-gray-6/10'>
-                    <ChartBar item='Session' list={list} labels={labels} />
+                    <ChartBarGroup
+                        labels={labels} />
                 </div>
 
                 <div className='col-span-4 flex flex-col md:flex-row  gap-2 bg-b-gray-1 p-2 rounded-[10] border border-b-gray-6/10'>

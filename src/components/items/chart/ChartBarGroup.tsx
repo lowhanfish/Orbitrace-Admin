@@ -20,34 +20,75 @@ ChartJS.register(
     Legend
 );
 
-
+// Ubah interface agar bisa menerima beberapa list data
 interface ChartBarProps {
-    labels: string[],
-    list: number[],
-    item: string
-
+    labels: string[];
+    item1: string;   // Nama Kategori 1
+    item2: string;   // Nama Kategori 2
 }
 
+// rgba(151, 168, 215, 0.8)
+// rgba(108, 136, 214, 0.8)
+// rgba(69, 102, 193, 0.8)
+// rgba(37, 72, 168, 0.8)
+// rgba(37, 72, 168, 0.8)
+// rgba(5, 36, 120, 0.8)
+// rgba(2, 23, 80, 0.8)
 
 
-const ChartBar = ({ labels, list, item }: ChartBarProps) => {
+var data_sets = [
+    {
+        label: "First",
+        data: [10, 20, 30, 12, 5],
+        backgroundColor: 'rgba(151, 168, 215, 0.8)', // Warna Biru Muda
+        borderRadius: 10,
+    },
+    {
+        label: "Seccond",
+        data: [15, 25, 35, 14, 3],
+        backgroundColor: 'rgba(108, 136, 214, 0.8)', // Warna Biru Tua
+        borderRadius: 10,
+    },
+    {
+        label: "Third",
+        data: [15, 25, 35, 12, 2],
+        backgroundColor: 'rgba(69, 102, 193, 0.8)', // Warna Biru Tua
+        borderRadius: 10,
+    },
+    {
+        label: "Fourth",
+        data: [15, 25, 35, 12, 2],
+        backgroundColor: 'rgba(37, 72, 168, 0.8)', // Warna Biru Tua
+        borderRadius: 10,
+    },
+    {
+        label: "Fifth",
+        data: [15, 25, 35, 12, 2],
+        backgroundColor: 'rgba(16, 49, 140, 0.8)', // Warna Biru Tua
+        borderRadius: 10,
+    },
+    {
+        label: "Sixth",
+        data: [15, 25, 35, 12, 2],
+        backgroundColor: 'rgba(5, 36, 120, 0.8)', // Warna Biru Tua
+        borderRadius: 10,
+    },
+    {
+        label: "Sixth",
+        data: [15, 25, 35, 12, 2],
+        backgroundColor: 'rgba(2, 23, 80, 0.8)', // Warna Biru Tua
+        borderRadius: 10,
+    },
+]
+
+const ChartBarGroup = ({ labels }: ChartBarProps) => {
     const data = {
         labels: labels,
-        datasets: [
-            {
-                label: item,
-                data: list,
-                backgroundColor: 'rgba(151, 168, 215, 0.83)',
-                borderRadius: 10,
-                // borderSkipped: false,
-            },
-        ],
+        datasets: data_sets,
     };
 
-    // Tambahkan 'return' dan pembungkus div
     return (
         <div style={{ position: 'relative', height: '300px', width: '100%' }}>
-
             <Bar
                 data={data}
                 options={{
@@ -60,22 +101,19 @@ const ChartBar = ({ labels, list, item }: ChartBarProps) => {
                     },
                     scales: {
                         x: {
+                            // Secara default stacked adalah false, 
+                            // jadi bar akan otomatis berkelompok (grouped)
                             ticks: {
-                                color: '#BABABA', // Warna teks (contoh: Slate-500 Tailwind)
-                                font: {
-                                    size: 12,     // Ukuran font
-                                    family: 'Arial', // Jenis font
-                                    weight: 'normal',
-                                }
+                                color: '#BABABA',
+                                font: { size: 12, family: 'Arial' }
                             }
                         },
                         y: {
                             ticks: {
                                 color: '#D4D4D4',
-                                font: {
-                                    size: 12
-                                }
-                            }
+                                font: { size: 12 }
+                            },
+                            beginAtZero: true
                         }
                     }
                 }}
@@ -84,4 +122,4 @@ const ChartBar = ({ labels, list, item }: ChartBarProps) => {
     );
 };
 
-export default ChartBar;
+export default ChartBarGroup;
