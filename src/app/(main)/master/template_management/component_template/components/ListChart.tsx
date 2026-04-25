@@ -4,6 +4,7 @@ import CodeWrapper from './CodeWrapper'
 import ChartBar from '@/components/items/chart/ChartBar'
 import ChartBarGroup from '@/components/items/chart/ChartBarGroup'
 import ChartVolume from '@/components/items/chart/ChartVolume'
+import { ChartDougnut } from '@/components/items/chart/ChartDougnut'
 
 
 
@@ -40,8 +41,8 @@ const ListButton = () => {
                         <p className='text-b-gray-4'>Grouped Bar Chart</p>
                     </div>
 
-                    <ChartBarGroup
-                        labels={labels}
+                    <ChartDougnut
+
                     />
                 </div>
 
