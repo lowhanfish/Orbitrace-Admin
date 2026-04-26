@@ -11,18 +11,18 @@ const datasets = [
     {
         fill: true,
         label: 'Total Chat',
-        data: [12, 19, 3, 5, 2, 3, 10, 45, 60, 55, 40, 35, 30, 45, 50, 75, 80, 40, 30, 25, 20, 15, 10, 5],
+        data: [10, 9, 7, 5, 6],
     },
     {
         fill: true,
         label: 'Berhasil Dijawab (RAG)',
-        data: [10, 15, 2, 4, 1, 3, 8, 40, 55, 50, 38, 30, 28, 40, 48, 70, 75, 38, 28, 22, 18, 12, 8, 4],
+        data: [9, 8, 7, 4, 3],
     },
 ]
 
 const ListButton = () => {
 
-    const [list, setList] = useState([12, 19, 3, 5, 2]);
+    const [list, setList] = useState([31, 21, 13, 15, 24]);
     const [labels, setLabels] = useState(['WhatsAppz', 'FaceBook', 'Instagram', 'TikTok', 'Telegram']);
 
     return (
@@ -61,6 +61,7 @@ const ListButton = () => {
 
                     <ChartVolume
                         datasets={datasets}
+                        length={5}
                     />
                 </div>
                 <div className='col-span-4 flex flex-col gap-2 bg-b-gray-1 p-2 rounded-[10] border border-b-gray-6/10'>
@@ -69,7 +70,8 @@ const ListButton = () => {
                     </div>
 
                     <ChartRadar
-
+                        labels={labels}
+                        datasets={datasets}
                     />
                 </div>
 
