@@ -58,7 +58,7 @@ const ChartVolume = ({ datasets }: ChartVolumeProps) => {
 
     const DataSetFinal = datasets.map((item, index) => {
         // 1. Ambil warna dasar dengan aman menggunakan modulo
-        const baseColor = MainColor.blue[index % MainColor.blue.length];
+        const baseColor = MainColor.main[index % MainColor.main.length];
 
         return {
             ...item,

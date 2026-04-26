@@ -1,5 +1,5 @@
 export const MainColor = {
-    blue: [
+    main: [
         'rgba(180, 185, 197, 0.8)',
         'rgba(151, 168, 215, 0.8)',
         'rgba(108, 136, 214, 0.8)',

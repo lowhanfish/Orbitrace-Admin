@@ -5,6 +5,7 @@ import ChartBar from '@/components/items/chart/ChartBar'
 import ChartBarGroup from '@/components/items/chart/ChartBarGroup'
 import ChartVolume from '@/components/items/chart/ChartVolume'
 import { ChartDougnut } from '@/components/items/chart/ChartDougnut'
+import { ChartRadar } from '@/components/items/chart/ChartRadar'
 
 const datasets = [
     {
@@ -48,7 +49,6 @@ const ListButton = () => {
                     <div className='flex justify-center items-center border-[0.1] border-b-gray-2 mb-2 bg-linear-to-r from-b-gray-2/50 to-b-gray-1 rounded-sm'>
                         <p className='text-b-gray-4'>Grouped Bar Chart</p>
                     </div>
-
                     <ChartDougnut
                         list={list} labels={labels} item='Session'
                     />
@@ -61,6 +61,15 @@ const ListButton = () => {
 
                     <ChartVolume
                         datasets={datasets}
+                    />
+                </div>
+                <div className='col-span-4 flex flex-col gap-2 bg-b-gray-1 p-2 rounded-[10] border border-b-gray-6/10'>
+                    <div className='flex justify-center items-center border-[0.1] border-b-gray-2 mb-2 bg-linear-to-r from-b-gray-2/50 to-b-gray-1 rounded-sm'>
+                        <p className='text-b-gray-4'>Radar Chart</p>
+                    </div>
+
+                    <ChartRadar
+
                     />
                 </div>
 
