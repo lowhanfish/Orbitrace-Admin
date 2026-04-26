@@ -6,10 +6,18 @@ import ChartBarGroup from '@/components/items/chart/ChartBarGroup'
 import ChartVolume from '@/components/items/chart/ChartVolume'
 import { ChartDougnut } from '@/components/items/chart/ChartDougnut'
 
-
-
-
-
+const datasets = [
+    {
+        fill: true,
+        label: 'Total Chat',
+        data: [12, 19, 3, 5, 2, 3, 10, 45, 60, 55, 40, 35, 30, 45, 50, 75, 80, 40, 30, 25, 20, 15, 10, 5],
+    },
+    {
+        fill: true,
+        label: 'Berhasil Dijawab (RAG)',
+        data: [10, 15, 2, 4, 1, 3, 8, 40, 55, 50, 38, 30, 28, 40, 48, 70, 75, 38, 28, 22, 18, 12, 8, 4],
+    },
+]
 
 const ListButton = () => {
 
@@ -42,7 +50,7 @@ const ListButton = () => {
                     </div>
 
                     <ChartDougnut
-
+                        list={list} labels={labels} item='Session'
                     />
                 </div>
 
@@ -52,7 +60,7 @@ const ListButton = () => {
                     </div>
 
                     <ChartVolume
-
+                        datasets={datasets}
                     />
                 </div>
 
@@ -68,9 +76,6 @@ const ListButton = () => {
 
 export default ListButton
 
-
-
 const codeString = `
-
     
 `

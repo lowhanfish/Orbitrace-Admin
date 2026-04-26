@@ -20,15 +20,12 @@ ChartJS.register(
     Legend
 );
 
-
 interface ChartBarProps {
     labels: string[],
     list: number[],
     item: string
 
 }
-
-
 
 const ChartBar = ({ labels, list, item }: ChartBarProps) => {
     const data = {

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import { useState, useEffect } from 'react';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -16,6 +16,8 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
+import { MainColor } from '@/utilities/MainColor'
+
 // Registrasi modul Chart.js
 ChartJS.register(
     CategoryScale,
@@ -28,36 +30,50 @@ ChartJS.register(
     Legend
 );
 
-const ChartVolume: React.FC = () => {
-    // Label jam (00:00 - 23:00)
+interface datasetsItem {
+    fill: boolean,
+    label: string,
+    data: number[],
+    borderColor?: string,
+    backgroundColor?: string,
+    tension?: number,
+    pointRadius?: number,
+    pointHoverRadius?: number,
+    borderWidth?: number
+}
+
+interface ChartVolumeProps {
+    datasets: datasetsItem[],
+}
+
+const ChartVolume = ({ datasets }: ChartVolumeProps) => {
+
     const labels = Array.from({ length: 24 }, (_, i) => `${i.toString().padStart(2, '0')}:00`);
+
+    const ReplaceColor = (color: string, opacity: string) => {
+        if (!color) return 'rgba(0,0,0,0.1)';
+        const color1 = color.split(',')
+        return color.replace(color1[3], `${opacity})`);
+    }
+
+    const DataSetFinal = datasets.map((item, index) => {
+        // 1. Ambil warna dasar dengan aman menggunakan modulo
+        const baseColor = MainColor.blue[index % MainColor.blue.length];
+
+        return {
+            ...item,
+            tension: item.tension ?? 0.4,
+            pointRadius: item.pointRadius ?? 3,
+            pointHoverRadius: item.pointHoverRadius ?? 6,
+            borderWidth: item.borderWidth ?? 1,
+            borderColor: item.borderColor ?? ReplaceColor(baseColor, '1'),
+            backgroundColor: item.backgroundColor ?? ReplaceColor(baseColor, '0.3'),
+        };
+    });
 
     const data: ChartData<'line'> = {
         labels,
-        datasets: [
-            {
-                fill: true,
-                label: 'Total Chat',
-                data: [12, 19, 3, 5, 2, 3, 10, 45, 60, 55, 40, 35, 30, 45, 50, 75, 80, 40, 30, 25, 20, 15, 10, 5],
-                // Menggunakan palette warna biru yang senada dengan ChartBar Anda (rgba 151, 168, 215)
-                borderColor: 'rgba(151, 168, 215, 1)',
-                backgroundColor: 'rgba(151, 168, 215, 0.2)',
-                tension: 0.4,
-                pointRadius: 3,
-                pointHoverRadius: 6,
-                borderWidth: 1
-            },
-            {
-                fill: true,
-                label: 'Berhasil Dijawab (RAG)',
-                data: [10, 15, 2, 4, 1, 3, 8, 40, 55, 50, 38, 30, 28, 40, 48, 70, 75, 38, 28, 22, 18, 12, 8, 4],
-                borderColor: 'rgba(75, 192, 192, 1)', // Warna hijau toska untuk pembeda
-                backgroundColor: 'rgba(75, 192, 192, 0.1)',
-                tension: 0.4,
-                pointRadius: 0,
-                borderWidth: 1
-            },
-        ],
+        datasets: DataSetFinal,
     };
 
     const options: ChartOptions<'line'> = {
@@ -66,11 +82,11 @@ const ChartVolume: React.FC = () => {
         plugins: {
             legend: {
                 position: 'top' as const,
-                align: 'end' as const, // Align ke kanan sesuai style admin modern
+                align: 'end' as const,
                 labels: {
                     usePointStyle: true,
                     boxWidth: 8,
-                    color: '#BABABA', // Warna teks legend disamakan
+                    color: '#BABABA',
                     font: {
                         size: 8,
                         family: 'Arial'
@@ -88,13 +104,13 @@ const ChartVolume: React.FC = () => {
         scales: {
             x: {
                 grid: {
-                    display: false, // Samakan dengan style ChartBar (Clean)
+                    display: false,
                 },
                 ticks: {
                     maxRotation: 0,
                     autoSkip: true,
                     maxTicksLimit: 12,
-                    color: '#BABABA', // Samakan dengan style ChartBar
+                    color: '#BABABA',
                     font: {
                         size: 11,
                         family: 'Arial',
@@ -104,11 +120,11 @@ const ChartVolume: React.FC = () => {
             y: {
                 beginAtZero: true,
                 grid: {
-                    color: 'rgba(212, 212, 212, 0.2)', // Garis horizontal tipis identik ChartBar
+                    color: 'rgba(212, 212, 212, 0.2)',
                 },
                 ticks: {
                     stepSize: 20,
-                    color: '#D4D4D4', // Samakan dengan style ChartBar
+                    color: '#D4D4D4',
                     font: {
                         size: 12
                     }
@@ -118,7 +134,6 @@ const ChartVolume: React.FC = () => {
     };
 
     return (
-        /* Sesuai permintaan: Style pembungkus, tinggi 350px, position relative */
         <div style={{ position: 'relative', height: '350px', width: '100%' }}>
             <Line options={options} data={data} />
         </div>

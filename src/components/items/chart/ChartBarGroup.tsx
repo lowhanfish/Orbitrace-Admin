@@ -25,13 +25,13 @@ interface ChartBarProps {
     labels: string[];
 }
 
-// rgba(2, 23, 80, 0.8)
-// rgba(151, 168, 215, 0.8)
-// rgba(108, 136, 214, 0.8)
-// rgba(69, 102, 193, 0.8)
-// rgba(37, 72, 168, 0.8)
-// rgba(37, 72, 168, 0.8)
-// rgba(5, 36, 120, 0.8)
+// 'rgba(180, 185, 197, 0.8)',
+// 'rgba(151, 168, 215, 0.8)',
+// 'rgba(108, 136, 214, 0.8)',
+// 'rgba(69, 102, 193, 0.8)',
+// 'rgba(37, 72, 168, 0.8)',
+// 'rgba(16, 49, 140, 0.8)',
+// 'rgba(5, 36, 120, 0.8)',
 
 
 var data_sets = [
@@ -74,7 +74,7 @@ var data_sets = [
     {
         label: "Sixth",
         data: [15, 25, 35, 12, 2],
-        backgroundColor: 'rgba(5, 36, 120, 0.8)', // Warna Biru Tua
+        backgroundColor: 'rgba(5, 36, 120, 0.8)',
         borderRadius: 10,
     },
 
