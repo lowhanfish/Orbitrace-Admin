@@ -43,12 +43,12 @@ interface datasetsItem {
 
 interface ChartVolumeProps {
     datasets: datasetsItem[],
-    length: number
+    labels_volume: string[]
 }
 
-const ChartVolume = ({ datasets, length }: ChartVolumeProps) => {
+const ChartVolume = ({ datasets, labels_volume }: ChartVolumeProps) => {
 
-    const labels = Array.from({ length: length }, (_, i) => `${i.toString().padStart(2, '0')}:00`);
+    const labels = labels_volume;
 
     const ReplaceColor = (color: string, opacity: string) => {
         if (!color) return 'rgba(0,0,0,0.1)';

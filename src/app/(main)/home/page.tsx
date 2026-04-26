@@ -3,9 +3,10 @@
 
 import { useState } from 'react'
 import BInput from '@/components/items/BInput'
-import TextSeparate from '@/components/items/TextSeparate';
-import { BsGear, BsWhatsapp, BsInstagram, BsFacebook, BsTiktok, BsTelegram } from "react-icons/bs";
+import { BsGear, BsGraphUpArrow, BsWhatsapp, BsInstagram, BsFacebook, BsTiktok, BsTelegram } from "react-icons/bs";
 import BFrame from '@/components/items/BFrame';
+import LineChart from './components/LineChart';
+import RadarChart from './components/RadarChart';
 
 
 
@@ -18,7 +19,7 @@ const InputData = () => {
 
     return (
 
-        <div>
+        <div className=''>
             <div className='p-3 mt-3 text-b-gray-5'>
                 <div className='flex items-center gap-3 text-[35px]'>
                     <BsGear />
@@ -86,7 +87,7 @@ const InputData = () => {
                 </div>
             </div>
 
-            <div className='flex flex-col md:flex-row gap-3'>
+            <div className='flex flex-col md:flex-row gap-0 md:gap-3'>
 
                 <div className='pt-2 flex-1'>
                     <BFrame>
@@ -172,6 +173,22 @@ const InputData = () => {
 
 
 
+            </div>
+
+            <div className='p-3 mt-7 text-b-gray-5'>
+                <div className='flex font-semibold items-center gap-3 text-[18px] md:text-[20px]'>
+                    <BsGraphUpArrow />
+                    <p>Performance Metrics Chart</p>
+                </div>
+                <p className='text-[12px]'>Your Operational Performance Analytics</p>
+            </div>
+            <div className='grid grid-cols-5 gap-3 pt-2'>
+                <div className='col-span-5 md:col-span-3 flex flex-col gap-2 bg-b-gray-1 p-2 rounded-[10] border border-b-gray-6/10'>
+                    <LineChart />
+                </div>
+                <div className='col-span-5 md:col-span-2 flex flex-col gap-2 bg-b-gray-1 p-2 rounded-[10] border border-b-gray-6/10'>
+                    <RadarChart />
+                </div>
             </div>
 
 

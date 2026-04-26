@@ -19,7 +19,7 @@ const layout = ({ children }: { children: ReactNode }) => {
 
 
                 <div className='w-full h-full relative'>
-                    <div className='absolute overflow-y-scroll w-full h-full'>
+                    <div className='absolute overflow-y-scroll w-full h-full px-1'>
                         {/* <Image
                             src="/images/bg-main2.jpg"
                             alt='Background'

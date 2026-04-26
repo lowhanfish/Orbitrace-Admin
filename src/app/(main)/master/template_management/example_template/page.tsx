@@ -90,18 +90,24 @@ const InputData = () => {
 
                     <tbody>
                         {Data.map((item, index) => (
-                            <tr key={index}>
-                                <td className='text-center'>{index + 1}</td>
-                                <td className='text-center'>
-                                    <button onClick={() => setOpen(!open)} className='bg-b-gray-2/80 hover:bg-b-gray-2/50 flex justify-center items-center rounded-full w-6 h-6 cursor-pointer'>
-                                        <BsGear className='text-b-gray-6' />
-                                    </button>
+                            <tr key={item.name} className='poppins'>
+                                <td className=''>
+                                    <p className='text-center'>{index + 1}</p>
                                 </td>
-                                <td>{item.name}</td>
-                                <td>{item.address}</td>
-                                <td>
-                                    <p className={`w-full py-1 flex items-center justify-center rounded-2xl text-[12px] text-b-gray-6 ${item.status === "pending" ? "bg-b-yellow-5" : item.status === "approve" ? "bg-b-green-5" : "bg-b-red-5"
-                                        }`}>
+                                <td className=''>
+                                    <div className='flex justify-center'>
+                                        <button onClick={() => setOpen(!open)} className='bg-b-gray-2/80 hover:bg-b-gray-2/50 flex justify-center items-center rounded-full w-6 h-6 cursor-pointer'>
+                                            <BsGear className='text-b-gray-6' />
+                                        </button>
+                                    </div>
+                                </td>
+                                <td className=''>{item.name}</td>
+                                <td className=''>{item.address}</td>
+                                <td className=''>
+                                    <p className={`w-30
+                                        ${item.status == "pending" ? "bg-b-yellow-5/50" : item.status == "approve" ? "bg-b-green-5/50" : "bg-b-red-5/50"
+                                        }
+                                        flex items-center justify-center rounded-2xl text-[10px] text-b-gray-6`}>
                                         {item.status}
                                     </p>
                                 </td>

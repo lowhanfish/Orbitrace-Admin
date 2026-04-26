@@ -31,10 +31,10 @@ const BModal = ({ title, size, openModal, setOpenModal, children }: BModalProps)
 
             {
                 openModal && (
-                    <div className='fixed inset-0 flex justify-center items-center bg-black/50 '>
+                    <div className='fixed inset-0 flex justify-center items-center bg-black/50 z-50 '>
                         <div className={`${width}`}>
-                            <div className='bg-white w-full rounded-[6]'>
-                                <div className='p-3 bg-neutral-800  rounded-t-[5] flex flex-row'>
+                            <div className='bg-white/90 w-full rounded-[6]'>
+                                <div className='p-3 bg-b-gray-5 dark:bg-black/80  rounded-t-[5] flex flex-row'>
                                     <div className='flex-1'>
                                         <p className='text-gray-200'>{title}</p>
                                     </div>

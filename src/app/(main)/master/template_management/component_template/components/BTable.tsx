@@ -56,7 +56,7 @@ const BTable = () => {
                 <tbody>
                     {
                         Data.map((item, index) => (
-                            <tr key={item.name}>
+                            <tr key={item.name} className='poppins'>
                                 <td className=''>
                                     <p className='text-center'>{index + 1}</p>
                                 </td>
@@ -71,9 +71,9 @@ const BTable = () => {
                                 <td className=''>{item.address}</td>
                                 <td className=''>
                                     <p className={`w-30
-                                        ${item.status == "pending" ? "bg-b-yellow-5" : item.status == "approve" ? "bg-b-green-5" : "bg-b-red-5"
+                                        ${item.status == "pending" ? "bg-b-yellow-5/50" : item.status == "approve" ? "bg-b-green-5/50" : "bg-b-red-5/50"
                                         }
-                                        flex items-center justify-center rounded-2xl text-[12px] text-b-gray-6`}>
+                                        flex items-center justify-center rounded-2xl text-[10px] text-b-gray-6`}>
                                         {item.status}
                                     </p>
                                 </td>

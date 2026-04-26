@@ -4,9 +4,11 @@ import CodeWrapper from './CodeWrapper'
 import ChartBar from '@/components/items/chart/ChartBar'
 import ChartBarGroup from '@/components/items/chart/ChartBarGroup'
 import ChartVolume from '@/components/items/chart/ChartVolume'
-import { ChartDougnut } from '@/components/items/chart/ChartDougnut'
 import { ChartRadar } from '@/components/items/chart/ChartRadar'
+import { ChartDougnut } from '@/components/items/chart/ChartDougnut'
 
+
+const labels_volume = Array.from({ length: 5 }, (_, i) => `${i.toString().padStart(2, '0')}:00`); // ['00:00', '01:00', '02:00', dst...]
 const datasets = [
     {
         fill: true,
@@ -61,7 +63,8 @@ const ListButton = () => {
 
                     <ChartVolume
                         datasets={datasets}
-                        length={5}
+                        labels_volume={labels_volume}
+
                     />
                 </div>
                 <div className='col-span-4 flex flex-col gap-2 bg-b-gray-1 p-2 rounded-[10] border border-b-gray-6/10'>
