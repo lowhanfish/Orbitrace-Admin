@@ -2,14 +2,13 @@
 
 import { useState } from 'react'
 import { BsGear, BsGraphUpArrow, BsWhatsapp, BsInstagram, BsFacebook, BsTiktok, BsTelegram } from "react-icons/bs";
-import BInput from '@/components/items/BInput'
-import TextSeparate from '@/components/items/TextSeparate';
+import ChartBar from '@/components/items/chart/ChartBar'
 import BModal from '@/components/items/BModal';
 
 const FrequentRAG = () => {
 
-    const [numberx, setNumberx] = useState<number | string>(0)
-    const [textx, setTextx] = useState<string | number>("")
+    const [list, setList] = useState([31, 21, 13, 15, 24]);
+    const [labels, setLabels] = useState(['WhatsAppz', 'FaceBook', 'Instagram', 'TikTok', 'Telegram']);
     const [open, setOpen] = useState(false);
 
 
@@ -33,13 +32,34 @@ const FrequentRAG = () => {
             status: true
         },
         {
-            name: "List of General Cost Standards",
+            name: "List of General Cost Standards 1",
             access: 123,
             chunk: 7,
             status: true
         },
         {
             name: "List of General Cost Standards 2",
+            access: 129,
+            chunk: 7,
+            status: false
+
+        },
+        {
+            name: "List of General Cost Standards 3",
+            access: 129,
+            chunk: 7,
+            status: false
+
+        },
+        {
+            name: "List of General Cost Standards 4",
+            access: 129,
+            chunk: 7,
+            status: false
+
+        },
+        {
+            name: "List of General Cost Standards 5",
             access: 129,
             chunk: 7,
             status: false
@@ -54,7 +74,12 @@ const FrequentRAG = () => {
         <>
 
             <div className='grid grid-cols-12 gap-3 pt-2'>
+
                 <div className='col-span-12 md:col-span-8 flex flex-col gap-2 bg-b-gray-1 p-2 rounded-[10] border border-b-gray-6/10' >
+
+                    <div className='flex justify-center items-center border-[0.1] border-b-gray-2 mb-2 bg-linear-to-r from-b-gray-2/50 to-b-gray-1 rounded-sm'>
+                        <p className='text-b-gray-4'>Bar Chart</p>
+                    </div>
 
                     <div className='h-75 overflow-scroll'>
                         <table className='Btable w-full'>
@@ -107,7 +132,10 @@ const FrequentRAG = () => {
                 </div>
 
                 <div className='col-span-12 md:col-span-4 flex flex-col gap-2 bg-b-gray-1 p-2 rounded-[10] border border-b-gray-6/10'>
-
+                    <div className='flex justify-center items-center border-[0.1] border-b-gray-2 mb-2 bg-linear-to-r from-b-gray-2/50 to-b-gray-1 rounded-sm'>
+                        <p className='text-b-gray-4'>Bar Chart</p>
+                    </div>
+                    <ChartBar item='Session' list={list} labels={labels} />
                 </div>
             </div>
 

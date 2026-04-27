@@ -134,6 +134,11 @@ const routex = [
                 path:"/",
                 children : [
                     {
+                        title : "Group Role Database",
+                        path:"/master/access_management/group_role_database",
+                        children : []
+                    },
+                    {
                         title : "Group Role Management",
                         path:"/master/access_management/group_role_management",
                         children : []
