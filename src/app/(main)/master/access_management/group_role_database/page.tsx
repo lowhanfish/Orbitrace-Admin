@@ -88,6 +88,9 @@ const page = () => {
                                         icon={
                                             <BsGear className='text-[30px] text-b-gray-4' />
                                         }
+                                        onClick={() =>
+                                            console.log("ssss")
+                                        }
                                     />
                                 </div>
                             ))

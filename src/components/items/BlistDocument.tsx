@@ -7,9 +7,10 @@ interface BlistDocumentProps {
     title?: string,
     subtitle?: string,
     stamp?: string,
+    onClick?: () => void
 }
 
-const BlistDocument = ({ icon, title, subtitle, stamp }: BlistDocumentProps) => {
+const BlistDocument = ({ icon, title, subtitle, stamp, onClick }: BlistDocumentProps) => {
     return (
         <div className='flex p-2 w-full bg-b-gray-2/70 rounded-[3]'>
             <div className='p-2 bg-b-gray-2 flex items-start'>
@@ -21,7 +22,9 @@ const BlistDocument = ({ icon, title, subtitle, stamp }: BlistDocumentProps) => 
                 <p className='text-[10px]'>{stamp ?? 'Empty Stamp'}</p>
             </div>
             <div className='bg-b-gray-2/50 p-1'>
-                <button className='bg-b-gray-3/80 hover:bg-b-gray-3/40 flex justify-center items-center rounded-full w-6 h-6 cursor-pointer'>
+                <button
+                    onClick={onClick}
+                    className='bg-b-gray-3/80 hover:bg-b-gray-3/40 flex justify-center items-center rounded-full w-6 h-6 cursor-pointer'>
                     <BsGear className='text-b-gray-6' />
                 </button>
             </div>
