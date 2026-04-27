@@ -7,6 +7,7 @@ import TextSeparate from '@/components/items/TextSeparate';
 import { BsGear } from "react-icons/bs";
 import BModal from '@/components/items/BModal';
 import BlistDocument from '@/components/items/BlistDocument';
+import BButton from '@/components/items/BButton'
 
 const page = () => {
 
@@ -42,6 +43,10 @@ const page = () => {
         },
     ]
 
+    const testClick = () => {
+        console.log("hy")
+    }
+
     return (
 
 
@@ -51,26 +56,32 @@ const page = () => {
             <div className='flex flex-col bg-linear-to-r from-b-gray-1 to-50% to-b-gray-1/40 shadow-sm rounded-[5] px-3 py-3 mt-2'>
                 <div className='grid grid-cols-1 md:grid-cols-12 gap-x-5 gap-y-1 w-full'>
                     <div className='col-span-6 '>
-                        <BInput
-                            title='Data number'
-                            placeholder='Data number'
-                            type='number'
-                            value={numberx}
-                            onChange={(value) => {
-                                setNumberx(value)
-                            }}
-                        />
+
                     </div>
-                    <div className='col-span-6 '>
-                        <BInput
-                            title='Data text'
-                            placeholder='Data text'
-                            type='text'
-                            value={textx}
-                            onChange={(value) => {
-                                setTextx(value)
-                            }}
-                        />
+                    <div className='col-span-6 flex justify-center items-center'>
+                        <div className='flex-1'>
+                            <BInput
+                                placeholder='Data text'
+                                type='text'
+                                value={textx}
+                                onChange={(value) => {
+                                    setTextx(value)
+                                }}
+                            />
+
+                        </div>
+
+                        <div className='w-[50px]'>
+                            <BButton
+                                color='gray'
+                                size='md'
+                                mode="neon"
+                                onClick={() => testClick()}
+                            >
+                                <p className='text-b-gray-6 text-[12px] font-bold'>+</p>
+                            </BButton>
+
+                        </div>
                     </div>
 
                 </div>
@@ -89,7 +100,7 @@ const page = () => {
                                             <BsGear className='text-[30px] text-b-gray-4' />
                                         }
                                         onClick={() =>
-                                            console.log("ssss")
+                                            setOpen(true)
                                         }
                                     />
                                 </div>
