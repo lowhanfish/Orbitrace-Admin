@@ -134,7 +134,7 @@ const ChartVolume = ({ datasets, labels_volume }: ChartVolumeProps) => {
     };
 
     return (
-        <div style={{ position: 'relative', height: '350px', width: '100%' }}>
+        <div style={{ position: 'relative', height: '300px', width: '100%' }}>
             <Line options={options} data={data} />
         </div>
     );

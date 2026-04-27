@@ -5,8 +5,12 @@ import { useState } from 'react'
 import BInput from '@/components/items/BInput'
 import { BsGear, BsGraphUpArrow, BsWhatsapp, BsInstagram, BsFacebook, BsTiktok, BsTelegram } from "react-icons/bs";
 import BFrame from '@/components/items/BFrame';
+
+import Welcome from './components/Welcome';
 import LineChart from './components/LineChart';
 import RadarChart from './components/RadarChart';
+import FrequentRAG from './components/FrequentRAG';
+
 
 
 
@@ -28,35 +32,7 @@ const InputData = () => {
                 <p className='text-[12px]'>Monitor key metrics and manage your platform</p>
             </div>
 
-            <div className='flex flex-col md:flex-row bg-linear-to-r from-b-gray-1 to-50% to-b-gray-2/90 shadow-sm rounded-[5] px-3 md:px-10 py-3 mt-2 text-b-gray-5'>
-                <div className='flex-1 text-[12px] text-center md:text-left'>
-                    <p className='text-[20px] font-bold'>Good evening, Kiken S Batara</p>
-                    <p className='text-[12px]'>Ready to make today productive! 🚀</p>
-
-                    <div className='flex items-end text-[12px] text-center md:text-left'>
-
-                        <div className='flex flex-row gap-1 items-center w-full justify-center md:justify-normal'>
-                            <span className='text-[30px] font-bold text-b-blue-4 '>06:37</span>
-                            <span className='text-[12px] '>PM</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div className='flex-1 flex flex-col pt-5 md:pt-0'>
-                    <div className='flex justify-center md:justify-end'>
-                        <p className='text-[39px] font-bold '>28°C</p>
-                    </div>
-                    <div className='flex gap-2 text-[14px] justify-center md:justify-end '>
-                        <p className='text-b-yellow-2 font-bold'>Sunny,</p>
-                        <p>Kendari</p>
-
-                    </div>
-                    <p className='text-[12px] text-center md:text-right'>Friday, April 24, 2026</p>
-                </div>
-
-
-
-            </div>
+            <Welcome />
 
 
             <div className='flex flex-col bg-linear-to-r from-b-gray-1 to-50% to-b-gray-1/40 shadow-sm rounded-[5] px-3 py-3 mt-2'>
@@ -182,14 +158,24 @@ const InputData = () => {
                 </div>
                 <p className='text-[12px]'>Your Operational Performance Analytics</p>
             </div>
-            <div className='grid grid-cols-5 gap-3 pt-2'>
-                <div className='col-span-5 md:col-span-3 flex flex-col gap-2 bg-b-gray-1 p-2 rounded-[10] border border-b-gray-6/10'>
+            <div className='grid grid-cols-12 gap-3 pt-2'>
+                <div className='col-span-12 md:col-span-8 flex flex-col gap-2 bg-b-gray-1 p-2 rounded-[10] border border-b-gray-6/10'>
                     <LineChart />
                 </div>
-                <div className='col-span-5 md:col-span-2 flex flex-col gap-2 bg-b-gray-1 p-2 rounded-[10] border border-b-gray-6/10'>
+                <div className='col-span-12 md:col-span-4 flex flex-col gap-2 bg-b-gray-1 p-2 rounded-[10] border border-b-gray-6/10'>
                     <RadarChart />
                 </div>
             </div>
+
+            <div className='p-3 mt-7 text-b-gray-5'>
+                <div className='flex font-semibold items-center gap-3 text-[18px] md:text-[20px]'>
+                    <BsGraphUpArrow />
+                    <p>Frequent RAG Assets</p>
+                </div>
+                <p className='text-[12px]'>Top 10 files retrieved for context.</p>
+            </div>
+
+            <FrequentRAG />
 
 
 
