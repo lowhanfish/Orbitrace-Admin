@@ -10,7 +10,7 @@ const BPagination = () => {
     const [pageShow, setPageShow] = useState<number>(4)
     const [dataLength, setDataLength] = useState<number>(9)
 
-    const [listPage, setListPage] = useState([])
+    const [listPage, setListPage] = useState<number[]>([])
 
     // const total_page = Math.ceil(dataLength/pageShow);
     // const start_number = pageShow*pageSelect-(pageShow-1) // page dimulai dari
@@ -28,13 +28,50 @@ const BPagination = () => {
     }
 
     const pushArray = () => {
+        // console.log("ASSSUUU")
+        // console.log(pageSelect % pageShow)
+        if (pageSelect === dataLength) {
+
+            var arr = []
+            console.log("Limit page")
+
+            const arr_dummy = []
+
+            for (let index = dataLength; index > (dataLength - 4); index--) {
+                arr_dummy.push(index)
+            }
+
+            arr = arr_dummy.reverse()
+            setListPage(arr)
+
+        } else {
+
+            console.log("No Limit page")
+            console.log(`page select ${pageSelect} dan page show ${pageSelect} dan hasil ${pageSelect % pageShow}`)
+            if (pageSelect % pageShow === 1) {
+                var arr = []
+                for (let index = pageSelect; index < (pageSelect + pageShow); index++) {
+
+                    if (index < dataLength) {
+                        arr.push(index)
+                    }
+                }
+                setListPage(arr)
+            }
+        }
+
+        console.log(listPage)
+
+
+
+
 
     }
 
 
     useEffect(() => {
-
-    }, [])
+        pushArray()
+    }, [pageSelect])
 
 
 
@@ -47,7 +84,6 @@ const BPagination = () => {
                     className='rounded-full border-2 border-b-gray-5 hover:bg-b-gray-2 active:bg-b-gray-5 active:text-b-gray-3 h-7 w-7 flex justify-center items-center cursor-pointer'>
                     <BsChevronDoubleLeft />
                 </button>
-
             </div>
 
             <div className='flex gap-1'>
@@ -57,11 +93,11 @@ const BPagination = () => {
                     (
                         <>
                             <button
-                                onClick={() => setPageSelect(dataLength)}
+                                onClick={() => setPageSelect(1)}
                                 className={`
                                 rounded-full min-h-7 min-w-7 
                                  p-1 
-                                ${pageSelect === dataLength ? 'text-b-gray-1 hover:text-b-gray-2 active:text-b-gray-5 bg-b-gray-6/80 active:bg-b-gray-1' : 'text-b-gray-5 active:bg-b-gray-6/80 active:text-b-gray-1 hover:bg-b-gray-2'}
+                                ${pageSelect === 1 ? 'text-b-gray-1 hover:text-b-gray-2 active:text-b-gray-5 bg-b-gray-6/80 active:bg-b-gray-1' : 'text-b-gray-5 active:bg-b-gray-6/80 active:text-b-gray-1 hover:bg-b-gray-2'}
                                 cursor-pointer
                             `}>
                                 <p className='text-[12px]'>1</p>
@@ -78,20 +114,20 @@ const BPagination = () => {
                     listPage.map((data, index) => (
                         <button
                             key={index}
-                            onClick={() => setPageSelect(index + 1)}
+                            onClick={() => setPageSelect(data)}
                             className={`
                                 rounded-full min-h-7 min-w-7 
                                  p-1 
-                                ${pageSelect === index + 1 ? 'text-b-gray-1 hover:text-b-gray-2 active:text-b-gray-5 bg-b-gray-6/80 active:bg-b-gray-1' : 'text-b-gray-5 active:bg-b-gray-6/80 active:text-b-gray-1 hover:bg-b-gray-2'}
+                                ${pageSelect === data ? 'text-b-gray-1 hover:text-b-gray-2 active:text-b-gray-5 bg-b-gray-6/80 active:bg-b-gray-1' : 'text-b-gray-5 active:bg-b-gray-6/80 active:text-b-gray-1 hover:bg-b-gray-2'}
                                 cursor-pointer
                             `}>
-                            <p className='text-[12px]'>{index + 1}</p>
+                            <p className='text-[12px]'>{data}</p>
                         </button>
                     ))
 
                 }
                 {
-                    dataLength > pageShow &&
+                    (dataLength > pageShow && !listPage.includes(dataLength)) &&
                     (
                         <>
                             <p>...</p>
