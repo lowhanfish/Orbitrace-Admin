@@ -17,9 +17,25 @@ const BlistDocument = ({ icon, title, subtitle, stamp, onClick }: BlistDocumentP
                 {icon ?? <BsFileTextFill className='text-[30px] text-b-gray-4' />}
             </div>
             <div className='flex-1 bg-b-gray-2/50 p-2'>
-                <p className='text-[12px] font-bold'>{title ?? 'Empty Title'}</p>
-                <p >{subtitle ?? 'Empty Subtitle'}</p>
-                <p className='text-[10px]'>{stamp ?? 'Empty Stamp'}</p>
+                {
+                    title && (
+                        <p className='text-[12px] font-bold'>{title}</p>
+                    )
+                }
+
+                {
+                    subtitle && (
+                        <p >{subtitle ?? 'Empty Subtitle'}</p>
+
+                    )
+                }
+
+                {
+                    stamp && (
+                        <p className='text-[10px]'>{stamp ?? 'Empty Stamp'}</p>
+                    )
+                }
+
             </div>
             <div className='bg-b-gray-2/50 p-1'>
                 <button

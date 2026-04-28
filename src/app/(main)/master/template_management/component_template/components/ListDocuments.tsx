@@ -22,6 +22,7 @@ const ListDocuments = () => {
                                         <BsFileTextFill className='text-[30px] text-b-gray-4' />
                                     }
                                     title='Empty Title'
+                                    stamp="20 Apr 2026"
                                     subtitle='Empty Subtitle'
                                     onClick={() =>
                                         setOpen(true)

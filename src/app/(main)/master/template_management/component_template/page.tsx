@@ -10,6 +10,8 @@ import BInputRadioButton from './components/BInputRadioButton';
 import ListModal from './components/ListModal';
 import ListButton from './components/ListButton';
 import ListChart from './components/ListChart';
+import ListPagination from './components/ListPagination';
+
 
 
 
@@ -46,6 +48,9 @@ const page = () => {
 
             <TextSeparate title='Button' />
             <ListButton />
+
+            <TextSeparate title='Pagination' />
+            <ListPagination />
 
             <TextSeparate title='Modal / Popup' />
             <ListModal />
