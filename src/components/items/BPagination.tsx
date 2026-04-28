@@ -4,8 +4,6 @@ import { BsChevronDoubleLeft, BsChevronDoubleRight, BsChevronBarLeft, BsChevronB
 
 const BPagination = () => {
 
-
-
     const [pageSelect, setPageSelect] = useState<number>(1);
     const [pageShow, setPageShow] = useState<number>(4)
     const [dataLength, setDataLength] = useState<number>(9)
@@ -28,46 +26,22 @@ const BPagination = () => {
     }
 
     const pushArray = () => {
-        // console.log("ASSSUUU")
-        // console.log(pageSelect % pageShow)
-        if (pageSelect === dataLength) {
+        // Tentukan angka awal grup (Start Group)
+        // Jika pageSelect 1-4, startGroup = 1
+        // Jika pageSelect 5-8, startGroup = 5
+        // Jika pageSelect 9, startGroup = 9
+        const startGroup = Math.floor((pageSelect - 1) / pageShow) * pageShow + 1;
 
-            var arr = []
-            console.log("Limit page")
-
-            const arr_dummy = []
-
-            for (let index = dataLength; index > (dataLength - 4); index--) {
-                arr_dummy.push(index)
-            }
-
-            arr = arr_dummy.reverse()
-            setListPage(arr)
-
-        } else {
-
-            console.log("No Limit page")
-            console.log(`page select ${pageSelect} dan page show ${pageSelect} dan hasil ${pageSelect % pageShow}`)
-            if (pageSelect % pageShow === 1) {
-                var arr = []
-                for (let index = pageSelect; index < (pageSelect + pageShow); index++) {
-
-                    if (index < dataLength) {
-                        arr.push(index)
-                    }
-                }
-                setListPage(arr)
+        let arr = [];
+        for (let i = 0; i < pageShow; i++) {
+            const targetPage = startGroup + i;
+            if (targetPage <= dataLength) {
+                arr.push(targetPage);
             }
         }
 
-        console.log(listPage)
-
-
-
-
-
-    }
-
+        setListPage(arr);
+    };
 
     useEffect(() => {
         pushArray()
@@ -89,7 +63,7 @@ const BPagination = () => {
             <div className='flex gap-1'>
 
                 {
-                    pageSelect > pageShow &&
+                    (!listPage.includes(1)) &&
                     (
                         <>
                             <button
@@ -107,7 +81,6 @@ const BPagination = () => {
                         </>
                     )
                 }
-
 
                 {
 
