@@ -5,7 +5,7 @@ interface BModalProps {
     title?: string,
     size?: string,
     openModal: boolean,
-    setOpenModal: Dispatch<SetStateAction<boolean>>
+    setOpenModal: Dispatch<SetStateAction<boolean>>,
     children: ReactNode
 }
 

@@ -4,17 +4,14 @@
 import { useState } from 'react'
 import BInput from '@/components/items/BInput'
 import TextSeparate from '@/components/items/TextSeparate';
-import { BsGear } from "react-icons/bs";
-import BModal from '@/components/items/BModal';
+import { BsDatabaseFillGear } from "react-icons/bs";
 import BlistDocument from '@/components/items/BlistDocument';
-import BButton from '@/components/items/BButton'
+import BPagination from '@/components/items/BPagination'
+import BFrameLinear from '@/components/items/BFrameLinear';
 
 import ModalAdd from './components/ModalAdd';
 import ModalConfig from './components/ModalConfig';
 import ModalDetail from './components/ModalDetail';
-
-
-
 
 const page = () => {
 
@@ -22,6 +19,16 @@ const page = () => {
     const [modalDetail, setModalDetail] = useState(false);
     const [modalAdd, setModalAdd] = useState(false);
     const [modalConfig, setModalConfig] = useState(false);
+
+
+    const [pageSelect, setPageSelect] = useState<number>(1);
+    const [pageLimit, setPageLimit] = useState<number>(4)
+    const [dataLength, setDataLength] = useState<number>(10)
+
+    const selectPage = () => {
+        console.log("hy")
+    }
+
 
     const [listData, setListData] = useState([
         { id: 1, title: 'Administrator', date: '20 Apr 2026' },
@@ -54,7 +61,6 @@ const page = () => {
                             }}
                         />
                     </div>
-
                 </div>
             </div>
 
@@ -66,7 +72,7 @@ const page = () => {
                                 <div key={item.id} className='col-span-12 md:col-span-6 w-full'>
                                     <BlistDocument
                                         icon={
-                                            <BsGear className='text-[30px] text-b-gray-4' />
+                                            <BsDatabaseFillGear className='text-[30px] text-b-gray-4' />
                                         }
                                         subtitle={item.title}
                                         stamp={item.date}
@@ -79,7 +85,24 @@ const page = () => {
                         }
                     </div>
                 </div>
+            </div>
 
+            <div className='py-2'>
+
+                <BFrameLinear>
+                    <div className='p-2'>
+                        <div className='py-2 bg-b-gray-2/20 rounded-sm'>
+                            <BPagination
+                                pageSelect={pageSelect}
+                                setPageSelect={setPageSelect}
+                                pageLimit={pageLimit}
+                                dataLength={dataLength}
+                                onClick={selectPage}
+                            />
+                        </div>
+
+                    </div>
+                </BFrameLinear>
             </div>
 
             <ModalAdd

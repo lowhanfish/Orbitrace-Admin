@@ -1,17 +1,28 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Dispatch, SetStateAction } from 'react'
 import { BsChevronDoubleLeft, BsChevronDoubleRight, BsChevronBarLeft, BsChevronBarRight } from "react-icons/bs";
 
-const BPagination = () => {
 
-    const [pageSelect, setPageSelect] = useState<number>(1);
-    const [pageShow, setPageShow] = useState<number>(4)
-    const [dataLength, setDataLength] = useState<number>(9)
+interface BPaginationProps {
+    pageSelect: number,
+    setPageSelect: Dispatch<SetStateAction<number>>,
+    pageLimit: number,
+    dataLength: number,
+    onClick?: () => void
+}
+
+
+
+const BPagination = ({ pageSelect, setPageSelect, pageLimit, dataLength, onClick }: BPaginationProps) => {
+
+    // const [pageSelect, setPageSelect] = useState<number>(1);
+    // const [pageLimit, setPageLimit] = useState<number>(4)
+    // const [dataLength, setDataLength] = useState<number>(99999)
 
     const [listPage, setListPage] = useState<number[]>([])
 
-    // const total_page = Math.ceil(dataLength/pageShow);
-    // const start_number = pageShow*pageSelect-(pageShow-1) // page dimulai dari
+    // const total_page = Math.ceil(dataLength/pageLimit);
+    // const start_number = pageLimit*pageSelect-(pageLimit-1) // page dimulai dari
 
     const next = () => {
         if (pageSelect < dataLength) {
@@ -30,10 +41,10 @@ const BPagination = () => {
         // Jika pageSelect 1-4, startGroup = 1
         // Jika pageSelect 5-8, startGroup = 5
         // Jika pageSelect 9, startGroup = 9
-        const startGroup = Math.floor((pageSelect - 1) / pageShow) * pageShow + 1;
+        const startGroup = Math.floor((pageSelect - 1) / pageLimit) * pageLimit + 1;
 
         let arr = [];
-        for (let i = 0; i < pageShow; i++) {
+        for (let i = 0; i < pageLimit; i++) {
             const targetPage = startGroup + i;
             if (targetPage <= dataLength) {
                 arr.push(targetPage);
@@ -50,24 +61,34 @@ const BPagination = () => {
 
 
     return (
-        <div className='flex gap-2'>
+        <div className='flex flex-wrap gap-2 justify-center items-center'>
 
             <div className='flex gap-2'>
                 <button
-                    onClick={back}
-                    className='rounded-full border-2 border-b-gray-5 hover:bg-b-gray-2 active:bg-b-gray-5 active:text-b-gray-3 h-7 w-7 flex justify-center items-center cursor-pointer'>
+                    onClick={() => {
+                        back();
+                        if (onClick) {
+                            onClick()
+                        }
+                    }}
+                    className='rounded-full border-1 border-b-gray-4 hover:bg-b-gray-2 active:bg-b-gray-5 active:text-b-gray-3 h-7 w-7 flex justify-center items-center cursor-pointer'>
                     <BsChevronDoubleLeft />
                 </button>
             </div>
 
-            <div className='flex gap-1'>
+            <div className='flex gap-0.5'>
 
                 {
                     (!listPage.includes(1)) &&
                     (
                         <>
                             <button
-                                onClick={() => setPageSelect(1)}
+                                onClick={() => {
+                                    setPageSelect(1);
+                                    if (onClick) {
+                                        onClick()
+                                    }
+                                }}
                                 className={`
                                 rounded-full min-h-7 min-w-7 
                                  p-1 
@@ -87,11 +108,16 @@ const BPagination = () => {
                     listPage.map((data, index) => (
                         <button
                             key={index}
-                            onClick={() => setPageSelect(data)}
+                            onClick={() => {
+                                setPageSelect(data);
+                                if (onClick) {
+                                    onClick()
+                                }
+                            }}
                             className={`
                                 rounded-full min-h-7 min-w-7 
                                  p-1 
-                                ${pageSelect === data ? 'text-b-gray-1 hover:text-b-gray-2 active:text-b-gray-5 bg-b-gray-6/80 active:bg-b-gray-1' : 'text-b-gray-5 active:bg-b-gray-6/80 active:text-b-gray-1 hover:bg-b-gray-2'}
+                                ${pageSelect === data ? 'text-b-gray-1 hover:bg-b-gray-6 active:text-b-gray-5 bg-b-gray-6/80 active:bg-b-gray-1' : 'text-b-gray-5 active:bg-b-gray-6/80 active:text-b-gray-1 hover:bg-b-gray-2'}
                                 cursor-pointer
                             `}>
                             <p className='text-[12px]'>{data}</p>
@@ -100,12 +126,17 @@ const BPagination = () => {
 
                 }
                 {
-                    (dataLength > pageShow && !listPage.includes(dataLength)) &&
+                    (dataLength > pageLimit && !listPage.includes(dataLength)) &&
                     (
                         <>
                             <p>...</p>
                             <button
-                                onClick={() => setPageSelect(dataLength)}
+                                onClick={() => {
+                                    setPageSelect(dataLength);
+                                    if (onClick) {
+                                        onClick()
+                                    }
+                                }}
                                 className={`
                                 rounded-full min-h-7 min-w-7 
                                  p-1 
@@ -124,14 +155,19 @@ const BPagination = () => {
 
             <div className='flex gap-2'>
                 <button
-                    onClick={next}
-                    className='rounded-full border-2 border-b-gray-5 hover:bg-b-gray-2 active:bg-b-gray-5 active:text-b-gray-3 h-7 w-7 flex justify-center items-center cursor-pointer'>
+                    onClick={() => {
+                        next()
+                        if (onClick) {
+                            onClick()
+                        }
+                    }}
+                    className='rounded-full border-1 border-b-gray-4 hover:bg-b-gray-2 active:bg-b-gray-5 active:text-b-gray-3 h-7 w-7 flex justify-center items-center cursor-pointer'>
                     <BsChevronDoubleRight />
                 </button>
             </div>
 
 
-            <p>{pageSelect}</p>
+            {/* <p>{pageSelect}</p> */}
 
 
         </div>
