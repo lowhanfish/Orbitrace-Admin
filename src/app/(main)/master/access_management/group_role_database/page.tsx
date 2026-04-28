@@ -52,36 +52,23 @@ const page = () => {
 
 
         <div>
-            <TextSeparate title='Input / Field' />
+            <TextSeparate title='Database Access Role' />
             <div className='flex flex-col bg-linear-to-r from-b-gray-1 to-50% to-b-gray-1/40 shadow-sm rounded-[5] px-3 py-3 mt-2'>
                 <div className='grid grid-cols-1 md:grid-cols-12 gap-x-5 gap-y-1 w-full'>
-                    <div className='col-span-6 '>
 
-                    </div>
-                    <div className='col-span-6 flex justify-center items-center'>
-                        <div className='flex-1'>
-                            <BInput
-                                placeholder='Data text'
-                                type='text'
-                                value={textx}
-                                onChange={(value) => {
-                                    setTextx(value)
-                                }}
-                            />
+                    <div className='col-span-6 flex gap-1 justify-center items-center'>
+                        <button className='bg-linear-to-r hover:bg-linear-to-b from-b-blue-4 to-b-blue-5/80 w-12 h-8.75 rounded-sm'>
+                            +
+                        </button>
+                        <BInput
+                            placeholder='Data text'
+                            type='text'
+                            value={textx}
+                            onChange={(value) => {
+                                setTextx(value)
+                            }}
+                        />
 
-                        </div>
-
-                        <div className='w-[50px]'>
-                            <BButton
-                                color='gray'
-                                size='md'
-                                mode="neon"
-                                onClick={() => testClick()}
-                            >
-                                <p className='text-b-gray-6 text-[12px] font-bold'>+</p>
-                            </BButton>
-
-                        </div>
                     </div>
 
                 </div>
@@ -99,6 +86,7 @@ const page = () => {
                                         icon={
                                             <BsGear className='text-[30px] text-b-gray-4' />
                                         }
+                                        title='Ini Title'
                                         onClick={() =>
                                             setOpen(true)
                                         }
