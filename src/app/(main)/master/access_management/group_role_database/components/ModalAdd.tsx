@@ -6,16 +6,26 @@ import BCheckBox from '@/components/items/BCheckBox';
 import BButton from '@/components/items/BButton';
 
 
-
-
-interface ModalAddProps {
-    open: boolean,
-    setOpen: Dispatch<SetStateAction<boolean>>
+interface listDataItem {
+    id: string | number, // Changed to allow number if your IDs are numeric
+    name: string,
+    SELECT: boolean,
+    INSERT: boolean,
+    UPDATE: boolean,
+    DELETE: boolean
 }
 
-const ModalAdd = ({ open, setOpen }: ModalAddProps) => {
+interface ModalAddProps {
+    open: boolean;
+    setOpen: Dispatch<SetStateAction<boolean>>;
+    action: string;
+
+}
+
+const ModalAdd = ({ open, setOpen, action }: ModalAddProps) => {
 
     const [textx, setTextx] = useState<string | number>("")
+    const [search, setSearch] = useState<string>("")
     const [listData, SetListData] = useState([
         {
             id: 1,
@@ -91,11 +101,9 @@ const ModalAdd = ({ open, setOpen }: ModalAddProps) => {
 
     }
 
-
-
     return (
         <div>
-            <BModal title='Add Database Access ' openModal={open} setOpenModal={setOpen} size='md'>
+            <BModal title={`${action} Database Access`} openModal={open} setOpenModal={setOpen} size='md'>
                 <div className='flex flex-col gap-2 p-4 over'>
                     <BInput
                         title='Title'
@@ -206,16 +214,34 @@ const ModalAdd = ({ open, setOpen }: ModalAddProps) => {
                             </BButton>
                         </div>
 
-                        <div className='w-25'>
-                            <BButton
-                                mode="glossy"
-                                color='gray'
-                                size='md'
-                                onClick={() => setOpen(false)}
-                            >
-                                <p className='text-white font-semibold text-[13px] text-shadow-xs text-shadow-zinc-500'>Add Data</p>
-                            </BButton>
-                        </div>
+                        {
+                            action == 'Add' ?
+                                (
+                                    <div className='w-25'>
+                                        <BButton
+                                            mode="glossy"
+                                            color='gray'
+                                            size='md'
+                                            onClick={() => setOpen(false)}
+                                        >
+                                            <p className='text-white font-semibold text-[13px] text-shadow-xs text-shadow-zinc-500'>Add Data</p>
+                                        </BButton>
+                                    </div>
+
+                                ) : (
+                                    <div className='w-25'>
+                                        <BButton
+                                            mode="glossy"
+                                            color='yellow'
+                                            size='md'
+                                            onClick={() => setOpen(false)}
+                                        >
+                                            <p className='text-white font-semibold text-[13px] text-shadow-xs text-shadow-zinc-500'>Edit Data</p>
+                                        </BButton>
+                                    </div>
+
+                                )
+                        }
                     </div>
                 </div>
 

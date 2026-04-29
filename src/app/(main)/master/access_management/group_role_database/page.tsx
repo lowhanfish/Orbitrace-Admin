@@ -25,10 +25,10 @@ const page = () => {
     const [pageLimit, setPageLimit] = useState<number>(4)
     const [dataLength, setDataLength] = useState<number>(10)
 
+
     const selectPage = () => {
         console.log("hy")
     }
-
 
     const [listData, setListData] = useState([
         { id: 1, title: 'Administrator', date: '20 Apr 2026' },
@@ -108,6 +108,7 @@ const page = () => {
             <ModalAdd
                 open={modalAdd}
                 setOpen={setModalAdd}
+                action="Add"
             />
 
             <ModalConfig
