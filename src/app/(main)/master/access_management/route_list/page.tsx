@@ -1,7 +1,7 @@
 
 "use client"
 
-import { useState } from 'react'
+import { useState, Fragment } from 'react'
 import BInput from '@/components/items/BInput'
 import TextSeparate from '@/components/items/TextSeparate';
 import { BsGear } from "react-icons/bs";
@@ -22,9 +22,6 @@ const page = () => {
     const [modalDetail, setModalDetail] = useState(false);
     const [modalAdd, setModalAdd] = useState(false);
     const [modalConfig, setModalConfig] = useState(false);
-
-
-
 
     return (
 
@@ -63,87 +60,20 @@ const page = () => {
                             <th className='w-[5%]'>
                                 <p className='text-center'>Act</p>
                             </th>
-                            <th className='w-[70%]'>Route Name</th>
-                            <th className='w-[20%]'>Route Link</th>
+                            <th className='w-[50%]'>Route Name</th>
+                            <th className='w-[40%]'>Route Link</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        {
-                            routex.map((item, index) => (
-                                <>
-                                    <tr className='poppins' key={index}>
-                                        <td className=''>
-                                            <button className='text-center text-[20px] w-full cursor-pointer'>
-                                                🟢
-                                            </button>
-                                        </td>
-                                        <td className=''>
-                                            <div className='flex justify-center'>
-                                                <button onClick={() => setModalConfig(!modalConfig)} className='bg-b-gray-2/80 hover:bg-b-gray-2/50 flex justify-center items-center rounded-full w-6 h-6 cursor-pointer'>
-                                                    <BsGear className='text-b-gray-6' />
-                                                </button>
-                                            </div>
-                                        </td>
-                                        <td className='font-bold'>{item.title}</td>
-                                        <td className=''><p className='text-center bg-b-gray-2 rounded-sm'>email</p></td>
-                                    </tr>
-
-                                    {
-                                        (item.children.length > 0) && (
-
-
-                                            item.children.map((item, index) => (
-
-                                                <>
-                                                    <tr className='poppins bg-b-gray-2/30!' key={index}>
-                                                        <td className=''>
-                                                            <button className='text-center text-[20px] w-full cursor-pointer'>
-                                                                ◻️
-                                                            </button>
-                                                        </td>
-                                                        <td className=''>
-                                                            <div className='flex justify-center'>
-                                                                <button onClick={() => setModalConfig(!modalConfig)} className='bg-b-gray-2/80 hover:bg-b-gray-2/50 flex justify-center items-center rounded-full w-6 h-6 cursor-pointer'>
-                                                                    <BsGear className='text-b-gray-6' />
-                                                                </button>
-                                                            </div>
-                                                        </td>
-                                                        <td className='pl-7!'>◻️ {item.title}</td>
-                                                        <td className=''><p className='text-center bg-b-gray-2 rounded-sm'>email</p></td>
-                                                    </tr>
-
-                                                    {
-
-                                                    }
-
-                                                    <tr className='poppins bg-b-gray-2/50!'>
-                                                        <td className=''>
-                                                            <button className='text-center text-[20px] w-full cursor-pointer'>
-                                                                🔘
-                                                            </button>
-                                                        </td>
-                                                        <td className=''>
-                                                            <div className='flex justify-center'>
-                                                                <button onClick={() => setModalConfig(!modalConfig)} className='bg-b-gray-2/80 hover:bg-b-gray-2/50 flex justify-center items-center rounded-full w-6 h-6 cursor-pointer'>
-                                                                    <BsGear className='text-b-gray-6' />
-                                                                </button>
-                                                            </div>
-                                                        </td>
-                                                        <td className='pl-14!'>🔘 asdasd</td>
-                                                        <td className=''><p className='text-center bg-b-gray-2 rounded-sm'>email</p></td>
-                                                    </tr>
-                                                </>
-                                            ))
-
-                                        )
-                                    }
-
-                                </>
-                            ))
-
-
-                        }
+                        {routex.map((item) => (
+                            <SubMenu
+                                key={item.title}
+                                item={item}
+                                level={1}
+                                onConfig={() => setModalConfig(true)} // Mengontrol modal pusat
+                            />
+                        ))}
 
                     </tbody>
                 </table>
@@ -177,5 +107,52 @@ const page = () => {
 }
 
 export default page
+
+type dataProps = {
+    title: string,
+    children?: dataProps[],
+    path?: string
+}
+
+const SubMenu = ({ item, level, onConfig }: { item: dataProps, level: number, onConfig: () => void }) => {
+    return (
+        <Fragment>
+            {/* 1. Render item itu sendiri dulu */}
+            <tr className={`poppins`}>
+                <td className=''>
+                    <button className='text-center text-[20px] w-full cursor-pointer'>
+                        {level === 1 ? '🟢' : level === 2 ? '◻️' : '🔘'}
+                    </button>
+                </td>
+                <td className=''>
+                    <div className='flex justify-center'>
+                        {/* Menggunakan fungsi yang dipassing dari parent */}
+                        <button onClick={onConfig} className='bg-b-gray-2/80 hover:bg-b-gray-2/50 flex justify-center items-center rounded-full w-6 h-6 cursor-pointer'>
+                            <BsGear className='text-b-gray-6' />
+                        </button>
+                    </div>
+                </td>
+                <td className={`${level === 1 ? 'pl-0 font-bold' : level === 2 ? 'pl-7!' : 'pl-14! italic'}`}>
+                    {level > 1 && '↳ '} {item.title}
+                </td>
+                <td className=''>
+                    <p className='px-2 bg-b-gray-2 rounded-sm'>
+                        {(item.children?.length == 0) && item.path}
+                    </p>
+                </td>
+            </tr>
+
+            {/* 2. Baru kemudian render anak-anaknya secara rekursif */}
+            {item.children?.map((child: any) => (
+                <SubMenu
+                    key={child.title}
+                    item={child}
+                    level={level + 1}
+                    onConfig={onConfig}
+                />
+            ))}
+        </Fragment>
+    )
+}
 
 
