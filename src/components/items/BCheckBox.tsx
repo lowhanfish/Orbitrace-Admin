@@ -8,7 +8,7 @@ interface BCheckBoxProps {
     size: string;
     title?: string;
     checked?: boolean;
-    value?: string;
+    value?: any;
     onChange: (checked: boolean, value: string) => void;
 }
 

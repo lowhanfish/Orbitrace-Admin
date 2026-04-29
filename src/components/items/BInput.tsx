@@ -20,7 +20,7 @@ const BInput = ({ title, type, value, placeholder, setValue, onChange }: BInputP
     // }
     return (
         <div className='w-full'>
-            <span className='text-[12px] text-b-gray-3 font-roboto'>{title}</span>
+            <span className='text-[12px] text-b-gray-5 font-roboto'>{title}</span>
             <input
                 placeholder={placeholder}
                 // onChange={(e) => getSetValue(e.target.value)}
