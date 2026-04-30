@@ -71,7 +71,7 @@ const page = () => {
                                 key={item.title}
                                 item={item}
                                 level={1}
-                                onConfig={() => setModalConfig(true)} // Mengontrol modal pusat
+                                onConfig={() => setModalConfig(true)}
                             />
                         ))}
 
@@ -115,18 +115,40 @@ type dataProps = {
 }
 
 const SubMenu = ({ item, level, onConfig }: { item: dataProps, level: number, onConfig: () => void }) => {
+
+    const [isOpen, setIsOpen] = useState<boolean>(false)
+
+
     return (
         <Fragment>
             {/* 1. Render item itu sendiri dulu */}
             <tr className={`poppins`}>
                 <td className=''>
-                    <button className='text-center text-[20px] w-full cursor-pointer'>
-                        {level === 1 ? '🟢' : level === 2 ? '◻️' : '🔘'}
+                    <button
+                        onClick={() => {
+                            if (item.children && item.children.length > 0) {
+                                setIsOpen(!isOpen)
+                            }
+                        }}
+                        className='text-center text-[20px] w-full cursor-pointer'>
+
+                        {
+
+                            level === 1 ? (item.children && item.children?.length > 0) ? '🟩' : '⬜️' :
+                                level === 2 ? (item.children && item.children?.length > 0) ? '🟠' : '⚪️' :
+                                    '🔘'
+
+                        }
+
+
+                        {/* {
+                            level === 1 ? '🟢' :
+                                level === 2 ? '◻️' :
+                                    '🔘'} */}
                     </button>
                 </td>
                 <td className=''>
                     <div className='flex justify-center'>
-                        {/* Menggunakan fungsi yang dipassing dari parent */}
                         <button onClick={onConfig} className='bg-b-gray-2/80 hover:bg-b-gray-2/50 flex justify-center items-center rounded-full w-6 h-6 cursor-pointer'>
                             <BsGear className='text-b-gray-6' />
                         </button>
@@ -142,15 +164,22 @@ const SubMenu = ({ item, level, onConfig }: { item: dataProps, level: number, on
                 </td>
             </tr>
 
+            {
+                isOpen && (
+                    item.children?.map((child: dataProps) => (
+                        <SubMenu
+                            key={child.title}
+                            item={child}
+                            level={level + 1}
+                            onConfig={onConfig}
+                        />
+                    ))
+                )
+
+            }
+
             {/* 2. Baru kemudian render anak-anaknya secara rekursif */}
-            {item.children?.map((child: any) => (
-                <SubMenu
-                    key={child.title}
-                    item={child}
-                    level={level + 1}
-                    onConfig={onConfig}
-                />
-            ))}
+            { }
         </Fragment>
     )
 }
