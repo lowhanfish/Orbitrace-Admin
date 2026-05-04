@@ -4,7 +4,7 @@
 import { useState, Fragment } from 'react'
 import BInput from '@/components/items/BInput'
 import TextSeparate from '@/components/items/TextSeparate';
-import { BsGear } from "react-icons/bs";
+import { BsGear, BsFillPlayFill } from "react-icons/bs";
 import BPagination from '@/components/items/BPagination'
 import BFrameLinear from '@/components/items/BFrameLinear';
 
@@ -134,9 +134,13 @@ const SubMenu = ({ item, level, onConfig }: { item: dataProps, level: number, on
 
                         {
 
-                            level === 1 ? (item.children && item.children?.length > 0) ? '🟩' : '⬜️' :
-                                level === 2 ? (item.children && item.children?.length > 0) ? '🟠' : '⚪️' :
-                                    '🔘'
+                            level === 1 ? (item.children && item.children?.length > 0) ?
+                                <div className={`flex text-[30px] justify-center text-b-blue-4 ${isOpen && 'rotate-90'}`}><BsFillPlayFill /></div> :
+                                <div className='flex text-[30px] justify-center text-b-gray-4'><BsFillPlayFill /></div> :
+                                level === 2 ? (item.children && item.children?.length > 0) ?
+                                    <div className={`flex text-[20px] justify-center text-b-green-2 ${isOpen && 'rotate-90'}`}><BsFillPlayFill /></div> :
+                                    <div className={`flex text-[20px] justify-center text-b-gray-4 ${isOpen && 'rotate-90'}`}><BsFillPlayFill /></div> :
+                                    <div className={`flex text-[10px] justify-center text-b-gray-4 ${isOpen && 'rotate-90'}`}><BsFillPlayFill /></div>
 
                         }
 
