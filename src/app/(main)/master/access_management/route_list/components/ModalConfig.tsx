@@ -20,13 +20,8 @@ const ModalConfig = ({ open, setOpen }: ModalAddProps) => {
             <BModal title='Configuration' openModal={open} setOpenModal={setOpen} size='xs'>
                 <div className='flex flex-col gap-2 p-4'>
                     <button
-                        onClick={() => setModalDetail(true)}
-                        className='bg-b-blue-4 hover:bg-b-blue-5/70 cursor-pointer flex gap-2 justify-center items-center text-[12px] p-1.5 rounded-md shadow-md'>
-                        Detail
-                    </button>
-                    <button
                         onClick={() => setModalAdd(true)}
-                        className='bg-b-yellow-4 hover:bg-b-yellow-5/70 cursor-pointer flex gap-2 justify-center items-center text-[12px] p-1.5 rounded-md shadow-md'>
+                        className='bg-b-yellow-6 hover:bg-b-yellow-5/70 cursor-pointer flex gap-2 justify-center items-center text-[12px] p-1.5 rounded-md shadow-md text-shadow-2xs'>
                         Edit
                     </button>
                     <button className='bg-b-red-4 hover:bg-b-red-5/70 cursor-pointer flex gap-2 justify-center items-center text-[12px] p-1.5 rounded-md shadow-md'>
