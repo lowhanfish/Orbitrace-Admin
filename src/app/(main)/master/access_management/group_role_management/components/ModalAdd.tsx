@@ -25,77 +25,6 @@ interface ModalAddProps {
 const ModalAdd = ({ open, setOpen, action }: ModalAddProps) => {
 
     const [textx, setTextx] = useState<string | number>("")
-    const [search, setSearch] = useState<string>("")
-    const [listData, SetListData] = useState([
-        {
-            id: 1,
-            name: "chats",
-            SELECT: false,
-            INSERT: false,
-            UPDATE: false,
-            DELETE: false
-        },
-        {
-            id: 2,
-            name: "companies",
-            SELECT: false,
-            INSERT: false,
-            UPDATE: false,
-            DELETE: false
-        },
-        {
-            id: 3,
-            name: "data_knowledge_base",
-            SELECT: false,
-            INSERT: false,
-            UPDATE: false,
-            DELETE: false
-        },
-        {
-            id: 4,
-            name: "history",
-            SELECT: false,
-            INSERT: false,
-            UPDATE: false,
-            DELETE: false
-        },
-        {
-            id: 5,
-            name: "sessions",
-            SELECT: false,
-            INSERT: false,
-            UPDATE: false,
-            DELETE: false
-        },
-        {
-            id: 6,
-            name: "user_tokens",
-            SELECT: true,
-            INSERT: false,
-            UPDATE: false,
-            DELETE: false
-        },
-        {
-            id: 7,
-            name: "users",
-            SELECT: true,
-            INSERT: false,
-            UPDATE: false,
-            DELETE: false
-        }
-
-    ])
-
-
-    const handleCheck = (index: number, key: string, value: boolean) => {
-        const data = listData.map((item, i) => {
-            if (i === index) {
-                return { ...item, [key]: value }
-            }
-            return item
-        })
-        SetListData(data)
-    }
 
     const AddData = () => {
 
@@ -105,100 +34,81 @@ const ModalAdd = ({ open, setOpen, action }: ModalAddProps) => {
         <div>
             <BModal title={`${action} Database Access`} openModal={open} setOpenModal={setOpen} size='md'>
                 <div className='flex flex-col gap-2 p-4 over'>
-                    <BInput
-                        title='Title'
-                        placeholder='Title'
-                        type='text'
-                        value={textx}
-                        onChange={(value) => {
-                            setTextx(value)
-                        }}
-                    />
+                    <div className='grid grid-cols-12 gap-x-4 gap-y-1'>
+                        <div className='col-span-12 md:col-span-6'>
+                            <BInput
+                                title='Group Name'
+                                placeholder='Title'
+                                type='text'
+                                value={textx}
+                                onChange={(value) => {
+                                    setTextx(value)
+                                }}
+                            />
+                        </div>
+                        <div className='col-span-12 md:col-span-6'>
+                            <BInput
+                                title='Group Role Database'
+                                placeholder='Title'
+                                type='text'
+                                value={textx}
+                                onChange={(value) => {
+                                    setTextx(value)
+                                }}
+                            />
+                        </div>
+                        <div className='col-span-12'>
+                            <div className='overflow-scroll  pt-2'>
+                                <table className='Btable w-full'>
+                                    <thead>
+                                        <tr className="text-left">
+                                            <th className='w-[5%] text-center'>No</th>
+                                            <th className='w-[55%] text-center'>PAGE NAME</th>
+                                            <th className='w-[10%]'>VIEW</th>
+                                            <th className='w-[10%]'>INSERT</th>
+                                            <th className='w-[10%] text-center'>UPDATE</th>
+                                            <th className='w-[10%] text-center'>DELETE</th>
+                                        </tr>
+                                    </thead>
 
-                    <div className='overflow-scroll'>
-                        <table className='Btable w-full'>
-                            <thead>
-                                <tr className="text-left">
-                                    <th className='w-[5%] text-center'>No</th>
-                                    <th className='w-[55%] text-center'>TABLE NAME</th>
-                                    <th className='w-[10%]'>SELECT</th>
-                                    <th className='w-[10%]'>INSERT</th>
-                                    <th className='w-[10%] text-center'>UPDATE</th>
-                                    <th className='w-[10%] text-center'>DELETE</th>
-                                </tr>
-                            </thead>
+                                    <tbody>
+                                        <tr className='poppins'>
+                                            <td className=''>
+                                                <p className='text-center'>1</p>
+                                            </td>
+                                            <td className=''>
+                                                cccc
+                                            </td>
+                                            <td className=''>
+                                                <div className='text-center font-semibold bg-b-gray-2 rounded-sm flex items-center justify-center p-1'>
 
-                            <tbody>
-                                {listData.map((item, index) => (
-                                    <tr key={item.name} className='poppins'>
-                                        <td className=''>
-                                            <p className='text-center'>{index + 1}</p>
-                                        </td>
-                                        <td className=''>
-                                            {item.name}
-                                        </td>
-                                        <td className=''>
-                                            <div className='text-center font-semibold bg-b-gray-2 rounded-sm flex items-center justify-center p-1'>
-                                                <BCheckBox
-                                                    checked={item.SELECT}
-                                                    value={item}
-                                                    onChange={
-                                                        (checked, value) => {
-                                                            handleCheck(index, 'SELECT', checked)
-                                                        }
-                                                    }
-                                                    size="sm" color='gray'
-                                                />
-                                            </div>
-                                        </td>
-                                        <td className=''>
-                                            <div className='text-center font-semibold bg-b-gray-2 rounded-sm flex items-center justify-center p-1'>
-                                                <BCheckBox
-                                                    checked={item.INSERT}
-                                                    value={item}
-                                                    onChange={
-                                                        (checked, value) => {
-                                                            handleCheck(index, 'INSERT', checked)
-                                                        }
-                                                    }
-                                                    size="sm" color='blue'
-                                                />
-                                            </div>
-                                        </td>
-                                        <td className=''>
-                                            <div className='text-center font-semibold bg-b-gray-2 rounded-sm flex items-center justify-center p-1'>
-                                                <BCheckBox
-                                                    checked={item.UPDATE}
-                                                    value={item}
-                                                    onChange={
-                                                        (checked, value) => {
-                                                            handleCheck(index, 'UPDATE', checked)
-                                                        }
-                                                    }
-                                                    size="sm" color='yellow'
-                                                />
-                                            </div>
-                                        </td>
-                                        <td className=''>
-                                            <div className='text-center font-semibold bg-b-gray-2 rounded-sm flex items-center justify-center p-1'>
-                                                <BCheckBox
-                                                    checked={item.DELETE}
-                                                    value={item}
-                                                    onChange={
-                                                        (checked, value) => {
-                                                            handleCheck(index, 'DELETE', checked)
-                                                        }
-                                                    }
-                                                    size="sm" color='red'
-                                                />
-                                            </div>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                                                </div>
+                                            </td>
+                                            <td className=''>
+                                                <div className='text-center font-semibold bg-b-gray-2 rounded-sm flex items-center justify-center p-1'>
 
+                                                </div>
+                                            </td>
+                                            <td className=''>
+                                                <div className='text-center font-semibold bg-b-gray-2 rounded-sm flex items-center justify-center p-1'>
+
+                                                </div>
+                                            </td>
+                                            <td className=''>
+                                                <div className='text-center font-semibold bg-b-gray-2 rounded-sm flex items-center justify-center p-1'>
+
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </div>
                     </div>
+
 
 
 

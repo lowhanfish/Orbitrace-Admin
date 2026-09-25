@@ -32,7 +32,7 @@ const ModalAdd = ({ open, setOpen, action }: ModalAddProps) => {
 
     return (
         <div>
-            <BModal title={`${action} Database Access`} openModal={open} setOpenModal={setOpen} size='md'>
+            <BModal title={`${action} Route Item`} openModal={open} setOpenModal={setOpen} size='md'>
                 <div className='flex flex-col gap-2 p-4 over'>
 
 
